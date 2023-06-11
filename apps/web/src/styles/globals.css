@@ -4,6 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: "black" !important;
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #23262f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #121214;
+  border: 3px solid #23262f;
 }

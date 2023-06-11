@@ -5,7 +5,7 @@ type VerticalCardProps = {};
 
 const VerticalCard: React.FC<VerticalCardProps> = () => {
   return (
-    <div className="border border-black rounded-lg md:h-[35rem] h-full w-full">
+    <div className="border border-slate-100 rounded-lg md:h-[35rem] h-full w-full text-white bg-black">
       <div className="w-full h-fit flex items-center justify-center">
         <Image
           src="/one.webp"
@@ -18,7 +18,7 @@ const VerticalCard: React.FC<VerticalCardProps> = () => {
         />
       </div>
 
-      <div className="border-b border-black border-t h-[17rem] flex flex-col items-start justify-between p-3">
+      <div className="border-b border-slate-100 border-t h-[16.5rem] flex flex-col items-start justify-between p-3">
         <div>TitleOne</div>
 
         <div>
