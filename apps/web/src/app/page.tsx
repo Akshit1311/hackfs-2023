@@ -1,3 +1,4 @@
+// Components
 import Navbar from "../components/Navbar/Navbar";
 import Showcase from "../components/Showcase/Showcase";
 
@@ -8,6 +9,7 @@ const page: React.FC<pageProps> = () => {
     <div>
       <Navbar />
       <Showcase />
+      <Navbar />
     </div>
   );
 };

@@ -8,7 +8,9 @@ type MainWrapperProps = {
 
 const MainWrapper: React.FC<MainWrapperProps> = ({ className, children }) => {
   return (
-    <section className={cn("max-w-screen-8xl mx-auto p-2", className)}>
+    <section
+      className={cn("max-w-screen-8xl mx-auto p-2 text-black", className)}
+    >
       {children}
     </section>
   );
