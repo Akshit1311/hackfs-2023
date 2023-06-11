@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 // Common
@@ -5,11 +6,22 @@ import Title from "../common/Title";
 import ContentWrapper from "../common/ContentWrapper";
 import VerticalCard from "../common/VerticalCard";
 import HorizontalCard from "../common/HorizontalCard";
+import { useRouter } from "next/navigation";
 
 type ShowcaseProps = {};
 
 const Showcase: React.FC<ShowcaseProps> = () => {
+  const router = useRouter();
+
   // Data
+  const VerticalData = [
+    { url: "one", desc: "Machato- The Native ChatGPT client for macOs" },
+    { url: "one", desc: "Machato- The Native ChatGPT client for macOs" },
+    { url: "one", desc: "Machato- The Native ChatGPT client for macOs" },
+    { url: "one", desc: "Machato- The Native ChatGPT client for macOs" },
+    { url: "one", desc: "Machato- The Native ChatGPT client for macOs" },
+  ];
+
   const HorizontalData = [
     {
       title: "3D",
@@ -101,8 +113,13 @@ const Showcase: React.FC<ShowcaseProps> = () => {
     <ContentWrapper className="md:py-10 py-8">
       <Title title="Staff Picks" className="text-2xl mb-2" />
       <div className="grid md:grid-cols-5 place-items-center gap-4 grid-cols-1">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <VerticalCard key={i} />
+        {VerticalData.map(({ desc, url }) => (
+          <VerticalCard
+            key={desc}
+            desc={desc}
+            url={url}
+            onClick={() => router.push(`/product/${url}`)}
+          />
         ))}
       </div>
 
