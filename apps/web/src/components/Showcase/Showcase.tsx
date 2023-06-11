@@ -73,7 +73,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
     },
     {
       title: "Fiction Books",
-      url: "Fiction",
+      url: "Publish",
       desc: "Perfect your craft with the same tools used at Dreamworks & Pixers.",
     },
     {
