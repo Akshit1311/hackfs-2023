@@ -31,4 +31,4 @@ const VerticalCard: React.FC<VerticalCardProps> = () => {
     </div>
   );
 };
-export default VerticalCard;
+export default React.memo(VerticalCard);

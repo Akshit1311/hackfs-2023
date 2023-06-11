@@ -4,7 +4,7 @@ import React from "react";
 
 // Common
 import Input from "../common/Input";
-import MainWrapper from "../common/MainWrapper";
+import ContentWrapper from "../common/ContentWrapper";
 
 type NavbarProps = {};
 
@@ -14,7 +14,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   return (
     <header className="md:py-6 border-b-2 border-slate-100">
-      <MainWrapper className="w-full">
+      <ContentWrapper className="w-full">
         <div className="flex items-center gap-4 md:flex-row flex-col">
           <div className="text-5xl font-bold text-white font-mabry">
             GumroaD
@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           </div>
         </div>
         <div className="md:flex hidden mt-6 text-white">List</div>
-      </MainWrapper>
+      </ContentWrapper>
     </header>
   );
 };

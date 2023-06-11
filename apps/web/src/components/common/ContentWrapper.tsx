@@ -18,4 +18,4 @@ const MainWrapper: React.FC<MainWrapperProps> = ({ className, children }) => {
     </section>
   );
 };
-export default MainWrapper;
+export default React.memo(MainWrapper);
