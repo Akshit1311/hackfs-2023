@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,11 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        mabry: ["Mabry", "sans-serif"],
+        "mabry-normal": ["Mabry-normal", "sans-serif"],
       },
-      colors: {
-        base: "#F4F4F0",
-      },
+      colors: {},
       screens: {
         "8xl": "1520px",
       },

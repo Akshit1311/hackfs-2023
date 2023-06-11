@@ -1,10 +1,40 @@
+"use client";
+
 import React from "react";
+
+// Common
+import Input from "../common/Input";
+import ContentWrapper from "../common/ContentWrapper";
 
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
+  // Handlers
+  const handleOnChange = () => {};
+
   return (
-    <header className="bg-[#23A094] md:p-[5%] p-4">Have a good coding</header>
+    <header className="md:py-6 border-b-2 border-slate-100 text-white">
+      <ContentWrapper className="w-full">
+        <div className="flex items-center gap-4 md:flex-row flex-col">
+          <div className="text-5xl font-bold text-white font-mabry">
+            GumroaD
+          </div>
+          <div className="flex items-center gap-2 md:w-full w-fit">
+            <div className="text-base text-white bg-black w-full rounded-lg border border-white p-4">
+              <Input
+                onChange={handleOnChange}
+                placeholder="Search products"
+                value=""
+                className="bg-transparent placeholder:text-slate-300"
+              />
+            </div>
+
+            <div className="md:hidden block ">mobile</div>
+          </div>
+        </div>
+        <div className="md:flex hidden mt-6 ">List</div>
+      </ContentWrapper>
+    </header>
   );
 };
 export default Navbar;
