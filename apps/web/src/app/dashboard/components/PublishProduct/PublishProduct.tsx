@@ -42,7 +42,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={() => setView("new-product")}
           type="button"
           size="sm"
-          className="bg-pink-500 text-black"
+          className="bg-pink-500 text-black border border-pink-500"
         >
           New Product
         </Button>
@@ -51,20 +51,20 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
     "new-product": (
       <ButtonStrip>
         <Button
-          size="sm"
           onClick={() => setView("product")}
           type="button"
-          className="border border-white "
+          size="sm"
+          className="border border-white text-white"
         >
           Cancel
         </Button>
         <Button
-          size="sm"
-          onClick={() => alert("todo")}
+          onClick={() => setView("new-product")}
           type="button"
-          className=" bg-pink-500 text-black "
+          size="sm"
+          className="bg-pink-500 text-black border border-pink-500"
         >
-          Customize
+          New Product
         </Button>
       </ButtonStrip>
     ),
@@ -72,7 +72,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
 
   return (
     <section className="overflow-y-auto h-full w-full">
-      <header className="p-4 border-b border-white flex items-center justify-between w-full">
+      <header className="p-[15px] border-b border-white flex items-center justify-between w-full">
         <h1 className="text-2xl">{ViewText[view]}</h1>
         {ViewHeader[view]}
       </header>

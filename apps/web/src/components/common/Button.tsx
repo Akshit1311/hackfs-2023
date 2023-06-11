@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   size,
 }) => {
   const sizeMap = {
-    sm: "p-2 rounded font-mabry-normal text-base w-40",
+    sm: "p-2 rounded font-mabry-normal text-base w-44",
   };
 
   return (
