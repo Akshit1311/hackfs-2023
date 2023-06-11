@@ -11,9 +11,7 @@ module.exports = {
       fontFamily: {
         mabry: ["Mabry", "sans-serif"],
       },
-      colors: {
-        base: "#242423",
-      },
+      colors: {},
       screens: {
         "8xl": "1520px",
       },

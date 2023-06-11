@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const handleOnChange = () => {};
 
   return (
-    <header className="md:py-6 border-b-2 border-slate-100">
+    <header className="md:py-6 border-b-2 border-slate-100 text-white">
       <ContentWrapper className="w-full">
         <div className="flex items-center gap-4 md:flex-row flex-col">
           <div className="text-5xl font-bold text-white font-mabry">
@@ -25,14 +25,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onChange={handleOnChange}
                 placeholder="Search products"
                 value=""
-                className="bg-transparent placeholder:text-slate-300 text-white"
+                className="bg-transparent placeholder:text-slate-300"
               />
             </div>
 
-            <div className="md:hidden block text-white">mobile</div>
+            <div className="hidden ">mobile</div>
           </div>
         </div>
-        <div className="md:flex hidden mt-6 text-white">List</div>
+        <div className="md:flex hidden mt-6 ">List</div>
       </ContentWrapper>
     </header>
   );

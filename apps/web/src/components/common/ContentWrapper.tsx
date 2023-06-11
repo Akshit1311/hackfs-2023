@@ -10,7 +10,7 @@ const MainWrapper: React.FC<MainWrapperProps> = ({ className, children }) => {
   return (
     <section
       className={cn(
-        "max-w-screen-8xl mx-auto p-2 text-white block px-20",
+        "max-w-screen-8xl mx-auto p-2 text-white block md:px-20",
         className
       )}
     >
