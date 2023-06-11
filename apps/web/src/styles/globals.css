@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Mabry";
-  src: url("/font/mabry-pro-black.ttf");
+  src: url("/font/mabry/MabryPro-Black.ttf");
 }
 
 @tailwind base;
