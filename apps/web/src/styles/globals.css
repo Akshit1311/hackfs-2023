@@ -3,6 +3,11 @@
   src: url("/font/mabry/MabryPro-Black.ttf");
 }
 
+@font-face {
+  font-family: "Mabry-normal";
+  src: url("/font/mabry/MabryPro-Medium.woff");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

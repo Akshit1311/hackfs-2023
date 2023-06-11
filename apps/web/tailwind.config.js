@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         mabry: ["Mabry", "sans-serif"],
+        "mabry-normal": ["Mabry-normal", "sans-serif"],
       },
       colors: {},
       screens: {

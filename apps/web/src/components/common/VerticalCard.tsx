@@ -22,11 +22,11 @@ const VerticalCard: React.FC<VerticalCardProps> = () => {
       </div>
 
       <div className="border-b border-slate-100 border-t flex flex-col items-start justify-between p-3">
-        <div className="text-left pb-10">
+        <div className="text-left pb-10 font-mabry-normal">
           Machato- The Native ChatGPT client for macOs
         </div>
 
-        <div>
+        <div className="font-mabry-normal">
           <div>INsideone</div>
           <div>Two</div>
         </div>

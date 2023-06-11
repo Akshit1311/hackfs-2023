@@ -1,26 +1,34 @@
 import Image from "next/image";
 import React from "react";
 
-type HorizontalCardProps = {};
+type HorizontalCardProps = {
+  title: string;
+  url: string;
+  desc: string;
+};
 
-const HorizontalCard: React.FC<HorizontalCardProps> = () => {
+const HorizontalCard: React.FC<HorizontalCardProps> = ({
+  desc,
+  title,
+  url,
+}) => {
   return (
     <button
       type="button"
-      className="flex items-center py-10 px-8 border border-slate-100 rounded-lg bg-black gap-4"
+      className="flex items-start py-10 px-8 border border-slate-100 rounded-lg bg-black gap-4"
     >
       <Image
-        src="/images/Svg/3d.svg"
-        alt=""
+        src={`/images/Svg/${url}.svg`}
+        alt={title}
         width={110}
         height={110}
         className="object-contain"
         loading="lazy"
         quality={100}
       />
-      <div className="text-white">
-        <div className="text-xl">Title</div>
-        <div className="text-base ">Desc</div>
+      <div className="text-white flex flex-col items-start justify-start">
+        <div className="text-2xl">{title}</div>
+        <div className="text-base font-mabry-normal text-left">{desc}</div>
       </div>
     </button>
   );
