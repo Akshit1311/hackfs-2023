@@ -8,11 +8,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body
+        suppressHydrationWarning={true}
+        className="bg-base min-h-screen w-full font-inter"
+      >
         <Header />
-        <main className="bg-base min-h-screen w-full text-white max-w-screen-8xl mx-auto font-inter">
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
