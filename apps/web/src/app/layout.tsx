@@ -13,7 +13,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className="bg-base min-h-screen w-full font-inter"
+        className="bg-neutral-800 min-h-screen w-full font-inter"
       >
         <Header />
         <main>{children}</main>

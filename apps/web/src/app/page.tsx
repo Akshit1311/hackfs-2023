@@ -9,7 +9,7 @@ const page: React.FC<pageProps> = () => {
     <div>
       <Navbar />
       <Showcase />
-      <Navbar />
+      
     </div>
   );
 };

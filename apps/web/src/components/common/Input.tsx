@@ -31,4 +31,4 @@ const Input: React.FC<InputProps> = ({
     onChange={(e) => onChange(e)}
   />
 );
-export default Input;
+export default React.memo(Input);

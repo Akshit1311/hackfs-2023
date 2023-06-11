@@ -7,6 +7,6 @@ type TitleProps = {
 };
 
 const Title: React.FC<TitleProps> = ({ title, className }) => (
-  <h2 className={cn(className, "text-black font-bold")}>{title}</h2>
+  <h2 className={cn(className, "text-white font-bold")}>{title}</h2>
 );
-export default Title;
+export default React.memo(Title);

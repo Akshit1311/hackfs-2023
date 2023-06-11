@@ -5,4 +5,4 @@ type HorizontalCardProps = {};
 const HorizontalCard: React.FC<HorizontalCardProps> = () => {
   return <div>Have a good coding</div>;
 };
-export default HorizontalCard;
+export default React.memo(HorizontalCard);

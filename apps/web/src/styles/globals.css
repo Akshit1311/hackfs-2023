@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Inter:wght@400;500;600;700;800;900&display=swap");
-
 @font-face {
   font-family: "Mabry";
   src: url("/font/mabry/MabryPro-Black.ttf");
@@ -9,7 +7,19 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #23262f;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #121214;
+  border: 3px solid #23262f;
+}
 body {
   color: "black" !important;
-  font-family: "Mabry", sans-serif;
+  font-family: "Mabry", sans-serif !important;
 }

@@ -9,11 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
         mabry: ["Mabry", "sans-serif"],
       },
       colors: {
-        base: "#F4F4F0",
+        base: "#242423",
       },
       screens: {
         "8xl": "1520px",
