@@ -13,7 +13,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <header className="md:py-6 border-b-2 border-black">
       <MainWrapper className="w-full flex items-center gap-4  md:flex-row flex-col">
-        <div className="text-5xl font-bold text-black">GUMroad</div>
+        <div className="text-5xl font-bold text-black font-mabry">GUMroad</div>
         <div className="flex items-center gap-2 md:w-full w-fit">
           <div className="text-base text-black bg-white w-full rounded-lg border border-black p-4">
             <Input
