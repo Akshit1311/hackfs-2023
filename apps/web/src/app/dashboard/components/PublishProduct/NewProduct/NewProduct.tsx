@@ -58,7 +58,7 @@ const NewProduct: React.FC<NewProductProps> = () => {
       </div>
       <div>
         <div className="">
-          <h4>Name</h4>
+          <Title title="Name" />
           <Input
             onChange={() => ""}
             placeholder="Name of Product"
@@ -74,6 +74,14 @@ const NewProduct: React.FC<NewProductProps> = () => {
             ))}
           </div>
         </div>
+
+        <Input
+          type="number"
+          onChange={() => ""}
+          placeholder="Fill Price"
+          value=""
+          className="mt-4 bg-black border border-white p-4 rounded-lg text-white"
+        />
       </div>
     </section>
   );

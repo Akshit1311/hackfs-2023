@@ -2,10 +2,13 @@
 
 import React from "react";
 import Button from "../../../../components/common/Button";
+import useDataStore from "../../../../store";
 
 type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
+  const setView = useDataStore((state) => state.setView);
+
   return (
     <aside className="md:w-[22rem] w-full md:border-white md:border-r h-screen">
       <div className="md:block hidden">
@@ -16,7 +19,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         <div className="p-5 flex flex-col items-start gap-4">
           <Button
             size="sm"
-            onClick={() => ""}
+            onClick={() => setView("product")}
             type="button"
             className="bg-pink-400 text-black border-black"
           >
