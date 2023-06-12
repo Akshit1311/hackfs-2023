@@ -7,18 +7,28 @@ type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
   return (
-    <aside className="md:w-72 w-full md:border-white md:border-r h-screen">
+    <aside className="md:w-[22rem] w-full md:border-white md:border-r h-screen">
       <div className="md:block hidden">
-        <div className="p-[69px] border-b border-white">
-          <h1 className="text-2xl font-bold">GumroaD</h1>
+        <div className="h-44 border-b border-white flex items-center justify-center">
+          <h1 className="text-6xl font-bold">GumroaD</h1>
         </div>
 
         <div className="p-5 flex flex-col items-start gap-4">
-          <Button onClick={() => ""} type="button">
+          <Button
+            size="sm"
+            onClick={() => ""}
+            type="button"
+            className="bg-pink-400 text-black border-black"
+          >
             Products
           </Button>
 
-          <Button onClick={() => ""} type="button">
+          <Button
+            onClick={() => alert("todo")}
+            type="button"
+            size="sm"
+            className="hover:bg-gray-500 bg-gray-600 transition-all duration-300 ease-in-out"
+          >
             Logout
           </Button>
         </div>
