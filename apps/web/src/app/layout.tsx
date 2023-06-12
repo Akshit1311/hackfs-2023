@@ -1,9 +1,6 @@
 // Styling
 import "../styles/globals.css";
 
-// Common
-import Header from "../components/common/Header";
-
 export default function RootLayout({
   children,
 }: {
@@ -11,11 +8,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script src="https://saturn.tech/widget.js" />
+      </head>
       <body
         suppressHydrationWarning={true}
         className="bg-neutral-800 min-h-screen w-full font-inter"
       >
-        <Header />
         <main>{children}</main>
       </body>
     </html>
