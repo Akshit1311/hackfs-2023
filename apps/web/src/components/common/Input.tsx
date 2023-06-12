@@ -25,7 +25,7 @@ const Input: React.FC<InputProps> = ({
     autoComplete="off"
     type="text"
     placeholder={placeholder}
-    className={cn(className, "w-full border-none focus:outline-none")}
+    className={cn(className, "w-full focus:outline-none")}
     name={name}
     value={value}
     onChange={(e) => onChange(e)}

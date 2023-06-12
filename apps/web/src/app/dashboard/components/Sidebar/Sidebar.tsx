@@ -9,7 +9,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <aside className="md:w-72 w-full md:border-white md:border-r h-screen">
       <div className="md:block hidden">
-        <div className="p-5 border-b border-white">
+        <div className="p-[69px] border-b border-white">
           <h1 className="text-2xl font-bold">GumroaD</h1>
         </div>
 

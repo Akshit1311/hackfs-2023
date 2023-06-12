@@ -25,7 +25,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onChange={handleOnChange}
                 placeholder="Search products"
                 value=""
-                className="bg-transparent placeholder:text-slate-300"
+                className="bg-transparent placeholder:text-slate-300 border-none text-white"
               />
             </div>
 

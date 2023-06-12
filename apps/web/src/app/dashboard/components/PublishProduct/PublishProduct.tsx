@@ -42,7 +42,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={() => setView("new-product")}
           type="button"
           size="sm"
-          className="bg-pink-500 text-black border border-pink-500"
+          className="bg-pink-400 text-black border border-pink-400"
         >
           New Product
         </Button>
@@ -59,20 +59,20 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           Cancel
         </Button>
         <Button
-          onClick={() => setView("new-product")}
+          onClick={() => alert("todo")}
           type="button"
           size="sm"
-          className="bg-pink-500 text-black border border-pink-500"
+          className="bg-pink-400 text-black border border-pink-400"
         >
-          New Product
+          Next: Customize
         </Button>
       </ButtonStrip>
     ),
   } as const;
 
   return (
-    <section className="overflow-y-auto h-full w-full">
-      <header className="p-[15px] border-b border-white flex items-center justify-between w-full">
+    <section className="overflow-y-auto h-screen w-full">
+      <header className="p-16 border-b border-white flex items-center justify-between w-full sticky top-0 z-10 backdrop-blur-md">
         <h1 className="text-2xl">{ViewText[view]}</h1>
         {ViewHeader[view]}
       </header>
