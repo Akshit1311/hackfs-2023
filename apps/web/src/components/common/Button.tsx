@@ -4,7 +4,7 @@ import React from "react";
 import { cn } from "../../utils/helpers";
 
 type ButtonProps = {
-  size?: "sm";
+  size?: "sm" | "md";
   type: "submit" | "reset" | "button";
   className?: string;
   onClick: () => void;
@@ -20,6 +20,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const sizeMap = {
     sm: "p-2 rounded font-mabry-normal text-base w-44",
+    md: "p-4 text-xl rounded ",
   };
 
   return (

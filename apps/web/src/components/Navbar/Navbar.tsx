@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div className="md:hidden block ">mobile</div>
           </div>
         </div>
-        <div className="md:flex hidden mt-6 ">List</div>
+        <div className="md:flex hidden mt-6">List</div>
       </ContentWrapper>
     </header>
   );
