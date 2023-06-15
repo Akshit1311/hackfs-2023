@@ -95,7 +95,7 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ title, desc, url }) => (
-  <div className="border border-slate-100 rounded-lg h-full w-full text-white bg-black p-4 flex flex-col items-start justify-start">
+  <div className="border border-slate-100 rounded-lg h-full w-full text-white bg-black p-4 flex flex-col items-start justify-start hover:scale-105 transition-all duration-300 ease-linear">
     <Image
       src={`/images/product/${url}.webp`}
       alt=""

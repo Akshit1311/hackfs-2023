@@ -11,7 +11,7 @@ const Voting: React.FC<VotingProps> = () => {
     <section className="p-4 h-full flex items-center justify-start flex-col">
       <div className="grid grid-cols-3 gap-4 place-items-center">
         {Array.from({ length: 6 }).map((_, i) => (
-          <VotingCard key={i} />
+          <VotingCard key={i} src="/images/one.webp" onUpVoteClick={() => ""} />
         ))}
       </div>
     </section>
@@ -19,18 +19,23 @@ const Voting: React.FC<VotingProps> = () => {
 };
 export default React.memo(Voting);
 
-const VotingCard = () => (
-  <div className="flex items-center p-8 border border-slate-100 rounded-lg bg-black gap-4 hover:bg-white hover:text-black transition-all duration-700 ease-in-out text-white hover:border hover:border-black">
+interface Props {
+  src: string;
+  onUpVoteClick: () => void;
+}
+
+const VotingCard: React.FC<Props> = ({ src, onUpVoteClick }) => (
+  <div className="flex items-center p-6 border border-slate-100 rounded-lg bg-black gap-4 hover:bg-white hover:text-black transition-all duration-700 ease-in-out text-white hover:border hover:border-black">
     <Image
-      src="/images/one.webp"
-      alt="test"
+      src={src}
+      alt="Voting-img"
       width={200}
       height={200}
       className="object-contain"
     />
     <div className="flex items-center gap-2 flex-col">
       <Button
-        onClick={() => ""}
+        onClick={onUpVoteClick}
         type="button"
         size="sm"
         className="bg-pink-400"
