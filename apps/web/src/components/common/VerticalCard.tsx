@@ -1,6 +1,9 @@
 import Image from "next/image";
 import React from "react";
 
+// Assets
+import { RiStarSFill } from "react-icons/ri";
+
 type VerticalCardProps = {
   desc?: string;
   url?: string;
@@ -29,9 +32,9 @@ const VerticalCard: React.FC<VerticalCardProps> = ({ url, desc, onClick }) => {
       <div className="border-b border-slate-100 border-t flex flex-col items-start justify-between p-3">
         <div className="text-left pb-10 font-mabry-normal">{desc}</div>
 
-        <div className="font-mabry-normal">
-          <div>one</div>
-          <div>Two</div>
+        <div className="font-mabry-normal flex  gap-1">
+          <RiStarSFill size={20} />
+          <div>4.7</div>
         </div>
       </div>
 
