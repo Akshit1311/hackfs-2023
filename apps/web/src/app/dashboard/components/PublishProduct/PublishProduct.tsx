@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import dynamic from "next/dynamic";
 
 // Store
@@ -9,6 +9,7 @@ import useDataStore from "../../../../store";
 // Common
 import Button from "../../../../components/common/Button";
 import Input from "../../../../components/common/Input";
+import Voting from "./Voting/Voting";
 
 const Already = dynamic(() => import("./Already/Already"));
 const NewProduct = dynamic(() => import("./NewProduct/NewProduct"));
@@ -16,17 +17,20 @@ const NewProduct = dynamic(() => import("./NewProduct/NewProduct"));
 type PublishProductProps = {};
 
 const PublishProduct: React.FC<PublishProductProps> = () => {
-  const view = useDataStore((state) => state.view);
-  const setView = useDataStore((state) => state.setView);
+  const view = useDataStore(useCallback((state) => state.view, []));
+
+  const setView = useDataStore(useCallback((state) => state.setView, []));
 
   const View = {
     product: <Already />,
     "new-product": <NewProduct />,
+    voting: <Voting />,
   } as const;
 
   const ViewText = {
     product: "Product",
     "new-product": "Publish your first Project",
+    voting: "Voting",
   } as const;
 
   const ViewHeader = {
