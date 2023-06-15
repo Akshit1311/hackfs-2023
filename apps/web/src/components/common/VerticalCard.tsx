@@ -15,7 +15,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({ url, desc, onClick }) => {
     <button
       onClick={onClick}
       type="button"
-      className="border border-slate-100 rounded-lg h-full w-full text-white bg-black"
+      className="border border-slate-100 rounded-lg h-full w-full text-white bg-black hover:bg-white hover:text-black hover:border hover:border-gray-950 transition-all duration-700 ease-in-out hover:scale-105"
     >
       <div className="w-full h-fit flex items-center justify-center">
         <Image
@@ -29,7 +29,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({ url, desc, onClick }) => {
         />
       </div>
 
-      <div className="border-b border-slate-100 border-t flex flex-col items-start justify-between p-3">
+      <div className="border-b border-slate-100 border-t flex flex-col items-start justify-between p-3 hover:border-b hover:border-gray-950 transition-all duration-75 ease-in-out">
         <div className="text-left pb-10 font-mabry-normal">{desc}</div>
 
         <div className="font-mabry-normal flex  gap-1">
