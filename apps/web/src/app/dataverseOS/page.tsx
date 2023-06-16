@@ -6,44 +6,45 @@ import {
   RESOURCE,
 } from "@dataverse/runtime-connector";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "./context";
 
 const page: React.FC = () => {
-  const runtimeConnector = new RuntimeConnector(Extension);
   const [wallet, setWallet] = useState<WALLET>();
   const router = useRouter();
-  //   async function connect() {
-  //     if (typeof window === "undefined") return;
+  const app = "GUMROAD";
+  const { output } = useContext(Context);
 
-  //     try {
-  //       console.log("connect", { window });
-
-  //       const res = await runtimeConnector.connectWallet();
-  //       console.log({ res });
-  //       setWallet(res.wallet);
-  //       // router.push("/");
-  //       return res.address;
-  //     } catch (error) {
-  //       console.log({ error });
-  //     }
-  //   }
-
-  const connectWallet = async () => {
-    if (typeof window === "undefined") return;
+  const connect = async () => {
+    // if (typeof window === "undefined") return;
 
     try {
-      const res = await runtimeConnector.connectWallet();
+      const runtimeConnector = new RuntimeConnector(Extension);
+
+      console.log("connect", { window });
+
+      const res = await runtimeConnector.connectWallet(WALLET.METAMASK);
+      console.log({ res });
       setWallet(res.wallet);
 
-      return res.address;
+      const ceramicObj = {
+        app: output.createDapp.name,
+
+        wallet: WALLET.METAMASK,
+      };
+
+      const pkh = await runtimeConnector.createCapability(ceramicObj);
+      console.log({ pkh });
+      // router.push("/");
+      return { res, pkh };
     } catch (error) {
-      console.error(error);
+      console.log({ error });
     }
   };
 
   return (
     <div>
-      <button onClick={connectWallet} className="text-white">
+      <button onClick={connect} className="text-white">
         hi
       </button>
     </div>
