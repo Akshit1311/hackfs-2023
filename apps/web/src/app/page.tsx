@@ -27,7 +27,7 @@ const page: React.FC<pageProps> = () => {
 
   return (
     <div className="text-white flex flex-col items-center justify-center w-full h-screen font-mabry">
-      <h1 className="text-[23rem]">GumroaD</h1>
+      <h1 className="text-[18rem]">GumroaD</h1>
 
       {isConnected ? (
         <div className="text-white text-2xl font-mabry-normal flex items-center gap-2">
