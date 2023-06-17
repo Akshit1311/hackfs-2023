@@ -113,9 +113,9 @@ const Showcase: React.FC<ShowcaseProps> = () => {
     <ContentWrapper className="md:py-10 py-8">
       <Title title="Staff Picks" className="text-2xl mb-2" />
       <div className="grid md:grid-cols-5 place-items-center gap-4 grid-cols-1">
-        {VerticalData.map(({ desc, url }) => (
+        {VerticalData.map(({ desc, url }, i) => (
           <VerticalCard
-            key={desc}
+            key={i}
             desc={desc}
             url={url}
             onClick={() => router.push(`/product/${url}`)}

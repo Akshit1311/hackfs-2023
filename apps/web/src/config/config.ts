@@ -1,21 +1,14 @@
-import { getDefaultWallets } from "@rainbow-me/rainbowkit";
-import { configureChains, createConfig } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { createConfig, mainnet } from "wagmi";
+import { configureChains } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 
-export const { chains, publicClient } = configureChains(
+export const { publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
   [publicProvider()]
 );
 
-export const { connectors } = getDefaultWallets({
-  appName: "My RainbowKit App",
-  projectId: "1c4020bb3f1c1e1ca4a45bf2f1905514",
-  chains,
-});
-
-export const wagmiConfig = createConfig({
+export const config = createConfig({
   autoConnect: true,
-  connectors,
   publicClient,
+  webSocketPublicClient,
 });
