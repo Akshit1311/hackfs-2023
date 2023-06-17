@@ -16,7 +16,13 @@ type pageProps = {};
 const page: React.FC<pageProps> = () => {
   const { push } = useRouter();
 
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAccount({
+    onConnect({ address, connector, isReconnected }) {
+      console.log("Connected", { address, connector, isReconnected });
+
+      push("/discover");
+    },
+  });
 
   const { data: ensName } = useEnsName({ address });
 
@@ -27,7 +33,7 @@ const page: React.FC<pageProps> = () => {
 
   return (
     <div className="text-white flex flex-col items-center justify-center w-full h-screen font-mabry">
-      <h1 className="md:text-[17rem]  2xl:text-[25rem]">GumroaD</h1>
+      <h1 className="md:text-[17rem]  2xl:text-[20rem]">GumroaD</h1>
 
       {isConnected ? (
         <div className="text-white text-2xl font-mabry-normal flex items-center gap-2">
@@ -49,7 +55,6 @@ const page: React.FC<pageProps> = () => {
           size="md"
           onClick={() => {
             connect();
-            push("/discover");
           }}
           className="bg-white border black text-black"
         >
