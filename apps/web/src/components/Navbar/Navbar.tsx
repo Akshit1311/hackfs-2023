@@ -52,12 +52,12 @@ const Navbar: React.FC<NavbarProps> = () => {
               push("/");
             }}
             type="button"
-            className="text-5xl font-bold text-white font-mabry"
+            className="text-5xl font-bold font-mabry"
           >
             GumroaD
           </button>
           <div className="flex items-center gap-2 md:w-full w-fit">
-            <div className="text-base text-white bg-black w-full rounded-lg border border-white p-4">
+            <div className="text-base bg-black w-full rounded-lg border border-white p-4">
               <Input
                 onChange={handleOnChange}
                 placeholder="Search products"
