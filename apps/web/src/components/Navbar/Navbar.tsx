@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useCallback, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 // Wagmi
-import { useAccount, useEnsName } from "wagmi";
+import { useAccount, useDisconnect, useEnsName } from "wagmi";
 
 // Common
 import Input from "../common/Input";
@@ -14,9 +15,13 @@ import { getEnsName, sliceAddress } from "../../utils/helpers";
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
+  const { push } = useRouter();
+
   const { address, isConnected } = useAccount();
 
   const { data: ensName } = useEnsName({ address });
+
+  const { disconnect } = useDisconnect();
 
   const data = useDataStore(useCallback((state) => state.data, []));
 
@@ -41,9 +46,16 @@ const Navbar: React.FC<NavbarProps> = () => {
     <header className="md:py-6 border-b-2 border-slate-100 text-white">
       <ContentWrapper className="w-full">
         <div className="flex items-center gap-4 md:flex-row flex-col">
-          <div className="text-5xl font-bold text-white font-mabry">
+          <button
+            onClick={() => {
+              disconnect();
+              push("/");
+            }}
+            type="button"
+            className="text-5xl font-bold text-white font-mabry"
+          >
             GumroaD
-          </div>
+          </button>
           <div className="flex items-center gap-2 md:w-full w-fit">
             <div className="text-base text-white bg-black w-full rounded-lg border border-white p-4">
               <Input
