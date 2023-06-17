@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 // Common
 import Title from "../common/Title";
 import ContentWrapper from "../common/ContentWrapper";
 import VerticalCard from "../common/VerticalCard";
 import HorizontalCard from "../common/HorizontalCard";
-import { useRouter } from "next/navigation";
 
 type ShowcaseProps = {};
 
@@ -118,6 +118,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
             key={i}
             desc={desc}
             url={url}
+            onProfileClick={() => router.push(`/profile/${url}`)}
             onClick={() => router.push(`/product/${url}`)}
           />
         ))}

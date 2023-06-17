@@ -8,9 +8,15 @@ type VerticalCardProps = {
   desc?: string;
   url?: string;
   onClick?: () => void;
+  onProfileClick: () => void;
 };
 
-const VerticalCard: React.FC<VerticalCardProps> = ({ url, desc, onClick }) => {
+const VerticalCard: React.FC<VerticalCardProps> = ({
+  url,
+  desc,
+  onClick,
+  onProfileClick,
+}) => {
   return (
     <button
       onClick={onClick}
@@ -30,11 +36,23 @@ const VerticalCard: React.FC<VerticalCardProps> = ({ url, desc, onClick }) => {
       </div>
 
       <div className="border-b border-slate-100 border-t flex flex-col items-start justify-between p-3 hover:border-b hover:border-gray-950 transition-all duration-75 ease-in-out">
-        <div className="text-left pb-10 font-mabry-normal">{desc}</div>
+        <div className="text-left pb-6 font-mabry-normal">{desc}</div>
 
-        <div className="font-mabry-normal flex  gap-1">
+        <div
+          className="mb-4 flex items-center gap-2"
+          role="presentation"
+          onClick={(e) => {
+            e.stopPropagation();
+            onProfileClick();
+          }}
+        >
+          <div>image</div>
+          <div className="text-sm font-mabry-normal">Name</div>
+        </div>
+
+        <div className="font-mabry-normal flex gap-1">
           <RiStarSFill size={20} />
-          <div>4.7</div>
+          <div>4.7</div>d
         </div>
       </div>
 
