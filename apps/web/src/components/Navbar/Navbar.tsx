@@ -1,16 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useEffect } from "react";
+
+// Wagmi
+import { useAccount, useEnsName } from "wagmi";
 
 // Common
 import Input from "../common/Input";
 import ContentWrapper from "../common/ContentWrapper";
+import useDataStore from "../../store";
+import { getEnsName, sliceAddress } from "../../utils/helpers";
 
 type NavbarProps = {};
 
 const Navbar: React.FC<NavbarProps> = () => {
+  const { address, isConnected } = useAccount();
+
+  const { data: ensName } = useEnsName({ address });
+
+  const data = useDataStore(useCallback((state) => state.data, []));
+
+  const setData = useDataStore(useCallback((state) => state.setData, []));
+
   // Handlers
   const handleOnChange = () => {};
+
+  useEffect(() => {
+    setData("address", ensName);
+
+    if (isConnected) {
+      (async () => {
+        const name = await getEnsName(address);
+        console.log({ name });
+        setData("ensName", name);
+      })();
+    }
+  }, [isConnected, setData]);
 
   return (
     <header className="md:py-6 border-b-2 border-slate-100 text-white">
@@ -29,7 +54,15 @@ const Navbar: React.FC<NavbarProps> = () => {
               />
             </div>
 
-            <div className="md:hidden block ">mobile</div>
+            <div className="border border-white rounded-lg p-1.5">
+              {isConnected ? (
+                data.ensName ?? sliceAddress(address)
+              ) : (
+                <div className="w-36 text-center">
+                  Please Connect your wallet
+                </div>
+              )}
+            </div>
           </div>
         </div>
         <div className="md:flex hidden mt-6">List</div>
@@ -37,4 +70,4 @@ const Navbar: React.FC<NavbarProps> = () => {
     </header>
   );
 };
-export default Navbar;
+export default React.memo(Navbar);

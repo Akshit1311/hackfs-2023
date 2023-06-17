@@ -2,7 +2,7 @@ import { StoreSlice } from "../types";
 
 export type TData = {
   ensName: string;
-  address: `0x${string}`;
+  address: string;
 };
 
 export interface IDomainSlice {
