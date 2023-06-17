@@ -88,6 +88,8 @@ async function main() {
   const transferOwnerTx = await box.transferOwnership(timeLock.target);
   transferOwnerTx.wait(1);
 
+  console.log(`Box deployed to ${box.target} & Roles have been setup`);
+
   // DealClient
   const dealClient = await ethers.deployContract("DealClient", []);
 

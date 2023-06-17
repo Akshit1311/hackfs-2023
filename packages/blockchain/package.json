@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "pnpm hardhat compile",
     "test": "pnpm hardhat test",
-    "fvm:deploy": "pnpm hardhat run ./scripts/01_deploy_all.ts"
+    "dev": "pnpm hardhat run ./deploy/01_deploy_all.ts --network hardhat"
   },
   "keywords": [],
   "author": "",
