@@ -4,7 +4,7 @@ import React from "react";
 import { cn } from "../../utils/helpers";
 
 type ButtonProps = {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "xl";
   type: "submit" | "reset" | "button";
   className?: string;
   onClick: () => void;
@@ -21,6 +21,7 @@ const Button: React.FC<ButtonProps> = ({
   const sizeMap = {
     sm: "p-2 rounded font-mabry-normal text-base w-44",
     md: "p-4 text-xl rounded ",
+    xl: "px-6 py-3 rounded-lg w-56 text-2xl",
   };
 
   return (
@@ -29,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
       className={cn(
         className,
         sizeMap[size],
-        "flex items-center justify-center"
+        "flex items-center justify-center "
       )}
       onClick={onClick}
     >

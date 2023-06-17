@@ -1,4 +1,5 @@
 // Styling
+import RainbowProvider from "../components/RainbowProvider/RainbowProvider";
 import "../styles/globals.css";
 
 export default function RootLayout({
@@ -15,7 +16,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className="bg-neutral-800 min-h-screen w-full font-inter"
       >
-        <main>{children}</main>
+        <RainbowProvider>
+          <main>{children}</main>
+        </RainbowProvider>
       </body>
     </html>
   );
