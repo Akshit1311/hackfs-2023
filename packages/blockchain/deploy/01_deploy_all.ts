@@ -1,7 +1,13 @@
 import { ethers } from "hardhat";
+import {
+  ADDRESS_ZERO,
+  QUORUM_PERCENTAGE,
+  VOTING_DELAY,
+  VOTING_PERIOD,
+} from "../constants";
 
 const delegate = async (
-  governanceTokenAddress: string,
+  governanceTokenAddress: any,
   delegatedAccount: string
 ) => {
   const govToken = await ethers.getContractAt(
@@ -44,9 +50,6 @@ async function main() {
   console.log(`TimeLock deployed to ${timeLock.target}`);
 
   // Governer Contract
-  const VOTING_PERIOD = 5; // 5 blocks
-  const VOTING_DELAY = 1; // 1 block
-  const QUORUM_PERCENTAGE = 4; // 4%
 
   const governorContract = await ethers.deployContract("GovernorContract", [
     token.target,
@@ -61,7 +64,6 @@ async function main() {
   console.log(`Governor deployed to ${governorContract.target}`);
 
   // Setting Roles
-  const ADDRESS_ZERO = "0x0000000000000000000000000000000000000000";
 
   console.log("Setting roles...");
   const proposerRole = await timeLock.PROPOSER_ROLE();
