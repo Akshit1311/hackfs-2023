@@ -4,6 +4,7 @@ import React from "react";
 import { cn } from "../../utils/helpers";
 
 type InputProps = {
+  type?: string;
   value: string;
   name?: string;
   className?: string;
@@ -13,6 +14,7 @@ type InputProps = {
 };
 
 const Input: React.FC<InputProps> = ({
+  type,
   placeholder,
   className,
   name,
@@ -23,7 +25,7 @@ const Input: React.FC<InputProps> = ({
   <input
     autoFocus={autoFocus}
     autoComplete="off"
-    type="text"
+    type={type ? type : "text"}
     placeholder={placeholder}
     className={cn(className, "w-full focus:outline-none")}
     name={name}

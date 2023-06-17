@@ -1,8 +1,10 @@
 import type { StoreSlice } from "../types";
 
+export type TViewType = "product" | "new-product" | "voting";
+
 export interface IProductState {
-  view: "product" | "new-product";
-  setView: (view: "product" | "new-product") => void;
+  view: TViewType;
+  setView: (view: TViewType) => void;
 }
 
 const createProductViewSlice: StoreSlice<IProductState> = (set) => ({

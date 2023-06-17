@@ -4,11 +4,13 @@ import { IState } from "./types";
 
 // Slices
 import createProductViewSlice from "./slices/createProductViewSlice";
+import createDomainSlice from "./slices/createDomainSlice";
 
 const useDataStore = create<IState>()(
   devtools(
     (...a) => ({
       ...createProductViewSlice(...a),
+      ...createDomainSlice(...a),
     }),
     { name: "store" }
   )

@@ -1,4 +1,4 @@
-// Styling
+import PackageProvider from "../components/PackageProvider/PackageProvider";
 import "../styles/globals.css";
 
 export default function RootLayout({
@@ -15,7 +15,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className="bg-neutral-800 min-h-screen w-full font-inter"
       >
-        <main>{children}</main>
+        <PackageProvider>
+          <main>{children}</main>
+        </PackageProvider>
       </body>
     </html>
   );
