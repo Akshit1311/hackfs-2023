@@ -3,6 +3,7 @@ import Input from "../../../../../components/common/Input";
 import Title from "../../../../../components/common/Title";
 import Image from "next/image";
 import { cn } from "../../../../../utils/helpers";
+import FileUploadInput from "./FileUpload/FileUploadInput";
 
 type NewProductProps = {};
 
@@ -68,6 +69,10 @@ const NewProduct: React.FC<NewProductProps> = () => {
             value=""
             className="mt-1 bg-black border border-white p-4 rounded-lg text-white"
           />
+        </div>
+        <div className="mt-8">
+          <Title title="File Upload" />
+          <FileUploadInput onImageUpload={(url) => console.log(url)} />
         </div>
         <div className="mt-8">
           <Title title="Data DAO / Category" />
