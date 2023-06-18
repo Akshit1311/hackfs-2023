@@ -118,6 +118,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
             key={i}
             desc={desc}
             url={url}
+            name="test"
             onProfileClick={() => router.push(`/profile/${url}`)}
             onClick={() => router.push(`/product/${url}`)}
           />

@@ -5,6 +5,7 @@ import React from "react";
 import { RiStarSFill } from "react-icons/ri";
 
 type VerticalCardProps = {
+  name: string;
   desc?: string;
   url?: string;
   onClick?: () => void;
@@ -12,6 +13,7 @@ type VerticalCardProps = {
 };
 
 const VerticalCard: React.FC<VerticalCardProps> = ({
+  name,
   url,
   desc,
   onClick,
@@ -46,8 +48,14 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
             onProfileClick();
           }}
         >
-          <div>image</div>
-          <div className="text-sm font-mabry-normal">Name</div>
+          <Image
+            src="images/one.webp"
+            alt=""
+            width={50}
+            height={50}
+            className="object-contain rounded-full"
+          />
+          <div className="text-sm font-mabry-normal">{name}I</div>
         </div>
 
         <div className="font-mabry-normal flex gap-1">
