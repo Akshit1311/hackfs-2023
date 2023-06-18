@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../../../../components/common/Input";
 import Title from "../../../../../components/common/Title";
 import Image from "next/image";
+import { cn } from "../../../../../utils/helpers";
 
 type NewProductProps = {};
 
 const NewProduct: React.FC<NewProductProps> = () => {
+  const [activeDataDao, setActiveDataDao] = useState("digital");
+
   const ProductData = [
     {
       url: "digital",
@@ -27,11 +30,11 @@ const NewProduct: React.FC<NewProductProps> = () => {
       title: "Digital Product",
       desc: "Any set of files to download or to stream.",
     },
-    {
-      url: "membership",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
+    // {
+    //   url: "membership",
+    //   title: "Digital Product",
+    //   desc: "Any set of files to download or to stream.",
+    // },
     {
       url: "newsletter",
       title: "Digital Product",
@@ -67,10 +70,24 @@ const NewProduct: React.FC<NewProductProps> = () => {
           />
         </div>
         <div className="mt-8">
-          <Title title="Type" />
+          <Title title="Data DAO / Category" />
           <div className="grid md:grid-cols-3 grid-cols-1 gap-6 mt-4">
+            <Card
+              desc={"Create your own Data DAO"}
+              title={"Custom Data DAO"}
+              url={"membership"}
+              active={activeDataDao === "membership"}
+              onClick={() => setActiveDataDao("membership")}
+            />
             {ProductData.map(({ desc, title, url }, i) => (
-              <Card key={i} desc={desc} title={title} url={url} />
+              <Card
+                key={i}
+                desc={desc}
+                title={title}
+                url={url}
+                onClick={() => setActiveDataDao(url)}
+                active={activeDataDao === url}
+              />
             ))}
           </div>
         </div>
@@ -92,10 +109,18 @@ interface Props {
   title: string;
   desc: string;
   url: string;
+  active?: boolean;
+  onClick?: () => void;
 }
 
-const Card: React.FC<Props> = ({ title, desc, url }) => (
-  <div className="border border-slate-100 rounded-lg h-full w-full text-white bg-black p-4 flex flex-col items-start justify-start hover:scale-105 transition-all duration-300 ease-linear">
+const Card: React.FC<Props> = ({ title, desc, url, active, onClick }) => (
+  <div
+    onClick={onClick}
+    className={cn(
+      "border-2  rounded-lg h-full w-full text-white bg-black p-4 flex flex-col items-start justify-start hover:scale-105 transition-all duration-100 ease-linear",
+      active ? "border-blue-400" : "border-slate-100"
+    )}
+  >
     <Image
       src={`/images/product/${url}.webp`}
       alt=""

@@ -1,0 +1,28 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "pnpm hardhat compile",
+    "test": "pnpm hardhat test",
+    "dev": "pnpm hardhat run ./deploy/01_deploy_all.ts --network hardhat"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "dotenv": "^16.3.0",
+    "hardhat": "^2.15.0",
+    "hardhat-deploy": "^0.11.31"
+  },
+  "dependencies": {
+    "@ensdomains/buffer": "^0.1.1",
+    "@openzeppelin/contracts": "^4.9.2",
+    "@zondax/filecoin-solidity": "^4.0.3",
+    "@zondax/solidity-bignumber": "^0.1.0",
+    "solidity-bignumber,": "link:@zondax/solidity-bignumber,",
+    "solidity-cborutils": "^2.0.0"
+  }
+}
