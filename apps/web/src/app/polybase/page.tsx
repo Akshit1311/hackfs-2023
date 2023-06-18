@@ -6,7 +6,6 @@ import { useAccount, usePublicClient } from "wagmi";
 import { ethPersonalSign } from "@polybase/eth";
 
 const page = () => {
-  // const publicClient = usePublicClient();
   const { address } = useAccount();
 
   const db = new Polybase({
@@ -14,7 +13,6 @@ const page = () => {
   });
 
   db.signer((data) => {
-    // console.log({ publicClient });
     console.log();
     return {
       h: "eth-personal-sign",
@@ -22,101 +20,187 @@ const page = () => {
     };
   });
 
-  const createResponse = async () => {
+  const createProduct = async () => {
     await db.applySchema(
       `
-    @public
-    collection CollectionName {
-      id: string;
-      name?: string;
-      publicKey?: PublicKey;
-  
-      constructor (id: string, name: string) {
-        this.id = id;
-        this.name = name;
-  
-        // Assign the public key of the user making the request to this record
-        if (ctx.publicKey)
-          this.publicKey = ctx.publicKey;
+      @public
+      collection Product {
+        id: string;
+        dao: string;
+        name: string;
+        price:number;
+        ipfs: string;
+        author: string;
+        votingStatus:string;
+        constructor (id: string, dao:string, name: string, price:number, ipfs:string, author:string, votingStatus:string) {
+          this.id = id;
+          this.dao = dao;
+          this.name = name;
+          this.price = price;
+          this.ipfs = ipfs;
+          this.author = author;
+          this.votingStatus = votingStatus;
+    
+         
+        }
+        updateDao(dao:string){
+          this.dao = dao;
+        }
+        updateName(name:string){
+          this.name = name;
+        }
+        updatePrice(price:number){
+          this.price = price;
+        }
+        updateIpfs(ipfs:string){
+          this.ipfs = ipfs;
+        }
+      updateAuthor(author:string){
+      this.author = author;
       }
-    }
+        updateVotingStatus(votingStatus:string){
+          this.votingStatus= votingStatus;
+        }
+      }
   `,
       "Filroad"
     );
   };
-  const creatAnotherResponse = async () => {
+
+  const createDAO = async () => {
     await db.applySchema(
       `
-      @public
-      collection AnjanaRandom{
-        id: string;
-        name: string;
-        city: string;
-        publicKey?: PublicKey;
-
-        constructor(id: string, name: string, city: string){
-          this.id = id;
-          this.name = name;
-          this.city = city;
-          if(ctx.publicKey){
-            this.publicKey = ctx.publicKey;
-          }
-        }
-        updateName(name: string){
-          this.name = name;
-        }
-      }
-      `,
+    @public
+  collection DAO{
+    id:string;
+    name:string;
+    products:Product[];
+    image:string;
+    constructor(id:string, name:string, products:Product[], image:string){
+      this.id = id;
+      this.name = name;
+      this.products = products;
+      this.image = image;
+    }
+    updateName(name:string){
+      this.name = name;
+    }
+    updateProducts(products: Product[]){
+      this.products = products;
+    }
+    updateImage(image:string){
+      this.image=image;
+    }
+  }
+    `,
       "Filroad"
     );
   };
-  const collectionReference = db.collection("CollectionName");
-  const anotherCollectionReference = db.collection("AnjanaRandom");
 
   useEffect(() => {
-    createResponse();
-    creatAnotherResponse();
+    createProduct();
+    createDAO();
   }, []);
-  const createRecord = async () => {
-    const recordData = await collectionReference.create([
-      "akshit",
-      "Akshit Gupta",
+  const collectionProductReference = db.collection("Product");
+  const collectionDAOReference = db.collection("DAO");
+  const writeProduct = async (
+    id: string,
+    name: string,
+    dao: string,
+    price: number,
+    author: string,
+    ipfs: string,
+    votingStatus: string
+  ) => {
+    const recordData = await collectionProductReference.create([
+      id,
+      dao,
+      name,
+      price,
+      ipfs,
+      author,
+      votingStatus,
     ]);
   };
-  const anotherCreateRecord = async () => {
-    const recordData = await anotherCollectionReference.create([
-      "aks",
-      "Akshit",
-      "Delhi",
+  const writeDAO = async (
+    id: string,
+    name: string,
+    products,
+    image: string
+  ) => {
+    const recordData = await collectionDAOReference.create([
+      id,
+      name,
+      products,
+      image,
     ]);
   };
-  const updateRecord = async () => {
-    const recordData = await collectionReference
-      .record("akshit")
-      .call("updateName", ["Akshit Gupta"]);
+
+  const updateProductName = async (id: string, name: string) => {
+    const recordData = await collectionProductReference
+      .record(id)
+      .call("updateName", [name]);
   };
-  const record = async () => {
-    const name = await collectionReference.get();
-    console.log({ name });
-    const { data } = name;
+  const updateProductDao = async (id: string, dao: string) =>
+    await collectionProductReference.record(id).call("updateDao", [dao]);
+  const updateProductPrice = async (id: string, price: number) =>
+    await collectionProductReference.record(id).call("updatePrice", [price]);
+  const updateProductIpfs = async (id: string, ipfs: string) =>
+    await collectionProductReference.record(id).call("updateIpfs", [ipfs]);
+  const updateProductAuthor = async (id: string, author: string) =>
+    await collectionProductReference.record(id).call("updateAuthor", [author]);
+
+  const readAllProducts = async () => {
+    const allPrducts = await collectionProductReference.get();
+    const { data } = allPrducts;
+    console.log({ data });
+  };
+  const getOneProduct = async (id: string) => {
+    const record = await collectionProductReference.record(id).get();
+    const { data } = record;
+    console.log({ data });
+  };
+  const readAllDAO = async () => {
+    const allPrducts = await collectionDAOReference.get();
+    const { data } = allPrducts;
     console.log({ data });
   };
   return (
     <div>
-      <button onClick={() => createRecord()} className="text-white">
+      <button
+        onClick={() =>
+          writeProduct(
+            "1",
+            "nftart",
+            "artdao",
+            0.0003,
+            "0xa1bac06d3C3213df5A511F6504807cfbf9b9d402",
+            "https://ipfs",
+            "done"
+          )
+        }
+        className="text-white"
+      >
         create record
       </button>
-      <button onClick={() => anotherCreateRecord()} className="text-white">
-        create another record
+
+      <button
+        onClick={() =>
+          writeDAO(
+            "1",
+            "development",
+            [db.collection("Product").record("1")],
+            "https://ipfs"
+          )
+        }
+        className="text-white p-2"
+      >
+        Write to DAO
       </button>
-      <button onClick={() => updateRecord()} className="text-white p-2">
-        Update record
-      </button>
-      <button onClick={() => record()} className="text-white p-2">
-        Read record
+      <button onClick={() => readAllDAO()} className="text-white">
+        Read All DAO
       </button>
     </div>
   );
 };
-
 export default page;
