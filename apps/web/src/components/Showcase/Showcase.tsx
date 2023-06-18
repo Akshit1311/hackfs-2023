@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 // Common
@@ -7,6 +7,7 @@ import Title from "../common/Title";
 import ContentWrapper from "../common/ContentWrapper";
 import VerticalCard from "../common/VerticalCard";
 import HorizontalCard from "../common/HorizontalCard";
+import { getAllProducts } from "../../app/polybase/db";
 
 type ShowcaseProps = {};
 
@@ -109,6 +110,14 @@ const Showcase: React.FC<ShowcaseProps> = () => {
       desc: "Perfect your craft with the same tools used at Dreamworks & Pixers.",
     },
   ];
+
+  useEffect(() => {
+    (async () => {
+      const products = await getAllProducts();
+      console.log({ products: products.map(({ data }) => data) });
+    })();
+  }, []);
+
   return (
     <ContentWrapper className="md:py-10 py-8">
       <Title title="Staff Picks" className="text-2xl mb-2" />
@@ -125,7 +134,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
         ))}
       </div>
 
-      <Title title="Products by Category" className="my-6 text-2xl" />
+      <Title title="Data DAOs / Category" className="my-6 text-2xl" />
 
       <div className="grid md:grid-cols-2 gap-4 grid-cols-1">
         {HorizontalData.map(({ desc, title, url }, i) => (

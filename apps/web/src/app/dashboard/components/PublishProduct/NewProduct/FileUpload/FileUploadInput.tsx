@@ -43,7 +43,14 @@ const FileUploadInput = ({ onImageUpload }: Props) => {
         dynamicLinks: dynamicLinks,
       });
 
-      console.log({ uploadId, bucketId, protocolLink, dynamicLinks });
+      onImageUpload(`${protocolLink}/${e.target.files[0].name}`);
+
+      console.log({
+        uploadId,
+        bucketId,
+        protocolLink,
+        dynamicLinks,
+      });
     } catch (error) {
       console.log({ error });
     }

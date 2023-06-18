@@ -56,14 +56,6 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
         >
           Cancel
         </Button>
-        <Button
-          onClick={async () => await propose()}
-          type="button"
-          size="sm"
-          className="bg-pink-400 text-black border border-black hover:bg-pink-500"
-        >
-          Next: Customize
-        </Button>
       </ButtonStrip>
     ),
   } as const;

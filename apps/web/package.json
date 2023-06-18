@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dataverse/communicator": "^1.0.24",
+    "@dataverse/runtime-connector": "^1.0.57",
+    "@polybase/client": "^0.6.2",
+    "@polybase/eth": "^0.6.2",
     "@spheron/browser-upload": "^1.0.5",
     "@spheron/storage": "^1.0.18",
     "clsx": "^1.2.1",

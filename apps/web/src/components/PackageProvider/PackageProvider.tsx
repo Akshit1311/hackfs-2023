@@ -10,8 +10,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-// rainbow
-
 const PackageProvider: React.FC<Props> = ({ children }) => {
   return <WagmiConfig config={config}>{children}</WagmiConfig>;
 };

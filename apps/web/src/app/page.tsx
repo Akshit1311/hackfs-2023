@@ -83,7 +83,7 @@ const page: React.FC<pageProps> = () => {
           Go from zero to $
         </div>
         <div className="border w-full bg-yellow-400 flex items-center justify-center h-full text-6xl text-black">
-          Data DAO
+          Data DAO Aggregator
         </div>
       </div>
     </div>
