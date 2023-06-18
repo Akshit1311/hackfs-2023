@@ -31,5 +31,6 @@ interface ContextType {
 export const Context = createContext<ContextType>({
   runtimeConnector: runtimeConnector,
   appVersion: "",
+  //@ts-ignore
   postModel: {},
 });

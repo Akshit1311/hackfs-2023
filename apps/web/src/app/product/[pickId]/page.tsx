@@ -19,7 +19,7 @@ export default function Page({ params }: { params: { pickId: string } }) {
           <div className="flex items-center gap-4">
             <div>Price button</div>
             <div className="font-mabry-normal text-2xl">
-              The Illustrator's Guide to Photographing Models
+              The Illustrator&apos;s Guide to Photographing Models
             </div>
           </div>
           <div className="flex items-center gap-4">

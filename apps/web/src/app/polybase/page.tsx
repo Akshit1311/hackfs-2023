@@ -1,13 +1,11 @@
 "use client";
 import { useEffect } from "react";
 import { Polybase } from "@polybase/client";
-import { useAccount, usePublicClient } from "wagmi";
+import { useAccount } from "wagmi";
 
 import { ethPersonalSign } from "@polybase/eth";
 
-const page = () => {
-  const { address } = useAccount();
-
+const Page = () => {
   const db = new Polybase({
     defaultNamespace: process.env.NEXT_PUBLIC_NAMESPACE,
   });
@@ -203,4 +201,4 @@ const page = () => {
     </div>
   );
 };
-export default page;
+export default Page;

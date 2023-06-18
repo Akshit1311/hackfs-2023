@@ -11,13 +11,7 @@ import { useEnsAvatar, useAccount } from "wagmi";
 import { RiStarSFill } from "react-icons/ri";
 import useDataStore from "../../../store";
 
-type pageProps = {};
-
-const Profile: React.FC<pageProps> = ({
-  params,
-}: {
-  params: { pId: string };
-}) => {
+const Profile = ({ params }: { params: { pId: string } }) => {
   const router = useRouter();
 
   const domainData = useDataStore(useCallback((state) => state.data, []));
@@ -64,7 +58,7 @@ const Profile: React.FC<pageProps> = ({
         </div>
       </div>
       <div className="py-5 px-[5%] text-5xl font-mabry-normal border-b border-white">
-        i make comics(:
+        i make comics
       </div>
       <div className="py-5 px-[5%] grid grid-cols-3">
         <Card

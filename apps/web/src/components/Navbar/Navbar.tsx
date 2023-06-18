@@ -78,7 +78,9 @@ const Navbar: React.FC<NavbarProps> = () => {
         </div>
         <div className="md:flex hidden mt-6">
           {ProductData.map(({ title }) => (
-            <span className="mx-4 text-xl font-mabry-normal">{title}</span>
+            <span key={title} className="mx-4 text-xl font-mabry-normal">
+              {title}
+            </span>
           ))}
         </div>
       </ContentWrapper>

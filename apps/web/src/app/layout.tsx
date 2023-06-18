@@ -1,5 +1,6 @@
 import PackageProvider from "../components/PackageProvider/PackageProvider";
 import "../styles/globals.css";
+import Script from "next/script";
 
 export default function RootLayout({
   children,
@@ -9,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://saturn.tech/widget.js" />
+        <Script src="https://saturn.tech/widget.js" async />
       </head>
       <body
         suppressHydrationWarning={true}

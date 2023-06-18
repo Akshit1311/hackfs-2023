@@ -10,10 +10,9 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 import { useRouter } from "next/navigation";
 import Button from "../components/common/Button";
 import { sliceAddress } from "../utils/helpers";
+import { NextPage } from "next";
 
-type pageProps = {};
-
-const page: React.FC<pageProps> = () => {
+const Page: NextPage = () => {
   const { push } = useRouter();
 
   const { address, isConnected } = useAccount({
@@ -89,4 +88,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;

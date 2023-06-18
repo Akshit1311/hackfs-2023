@@ -3,9 +3,7 @@ import React from "react";
 import Button from "../../../../../components/common/Button";
 import useDataStore from "../../../../../store";
 
-type AlreadyProps = {};
-
-const Already: React.FC<AlreadyProps> = () => {
+const Already = () => {
   const setView = useDataStore((state) => state.setView);
   return (
     <section className="p-20">
@@ -18,10 +16,10 @@ const Already: React.FC<AlreadyProps> = () => {
           className="object-contain"
         />
         <div className="text-center mt-6">
-          <h5>We've never met an idea we didn't like.</h5>
+          <h5>We&apos;ve never met an idea we didn&apos;t like.</h5>
           <p>
-            Your first product doesn't needs to be perfect.Just put it out
-            there,and see if it sticks.
+            Your first product doesn&apos;t needs to be perfect. Just put it out
+            there and see if it sticks.
           </p>
           <Button
             size="sm"

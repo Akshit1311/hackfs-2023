@@ -2,9 +2,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar/Sidebar";
 import PublishProduct from "./components/PublishProduct/PublishProduct";
 
-type pageProps = {};
-
-const page: React.FC<pageProps> = () => {
+const Page = () => {
   return (
     <section className="min-h-screen w-full flex items-start text-white md:flex-row flex-col">
       <Sidebar />
@@ -12,4 +10,4 @@ const page: React.FC<pageProps> = () => {
     </section>
   );
 };
-export default page;
+export default Page;
