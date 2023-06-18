@@ -53,9 +53,7 @@ const page: React.FC<pageProps> = () => {
         <Button
           type="button"
           size="md"
-          onClick={() => {
-            connect();
-          }}
+          onClick={() => connect()}
           className="bg-white border black text-black"
         >
           Connect Wallet
