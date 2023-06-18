@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             type="button"
             className="text-5xl font-bold font-mabry"
           >
-            GumroaD
+            FILroaD
           </button>
           <div className="flex items-center gap-2 md:w-full w-fit">
             <div className="text-base bg-black w-full rounded-lg border border-white p-4">

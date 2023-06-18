@@ -8,8 +8,8 @@ type VotingProps = {};
 
 const Voting: React.FC<VotingProps> = () => {
   return (
-    <section className="p-4 h-full flex items-center justify-start flex-col">
-      <div className="grid grid-cols-3 gap-4 place-items-center">
+    <section className="p-4 h-full flex items-center justify-start flex-col overflow-y-auto">
+      <div className="grid grid-cols-2 gap-4 place-items-center">
         {Array.from({ length: 6 }).map((_, i) => (
           <VotingCard key={i} src="/images/one.webp" onUpVoteClick={() => ""} />
         ))}
@@ -25,7 +25,7 @@ interface Props {
 }
 
 const VotingCard: React.FC<Props> = ({ src, onUpVoteClick }) => (
-  <div className="flex items-center p-6 border border-slate-100 rounded-lg bg-black gap-4 hover:bg-white hover:text-black transition-all duration-700 ease-in-out text-white hover:border hover:border-black">
+  <div className="flex items-center  p-4 border border-slate-100 rounded-lg bg-black gap-4 hover:bg-white hover:text-black transition-all duration-700 ease-in-out text-white hover:border hover:border-black">
     <Image
       src={src}
       alt="Voting-img"

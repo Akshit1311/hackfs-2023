@@ -3,7 +3,7 @@
 import React, { useCallback } from "react";
 
 // Helpers
-import { cn } from "../../../../utils/helpers";
+import { cn, sliceAddress } from "../../../../utils/helpers";
 
 // Assets
 import { RiProductHuntLine } from "react-icons/ri";
@@ -14,10 +14,20 @@ import useDataStore from "../../../../store";
 
 // Components
 import Button from "../../../../components/common/Button";
+import { useAccount, useDisconnect } from "wagmi";
+import { useRouter } from "next/navigation";
 
 type SidebarProps = {};
 
 const Sidebar: React.FC<SidebarProps> = () => {
+  const { isConnected, address } = useAccount();
+
+  const { disconnect } = useDisconnect();
+
+  const { push } = useRouter();
+
+  const data = useDataStore((state) => state.data);
+
   const view = useDataStore(useCallback((state) => state.view, []));
 
   const setView = useDataStore(useCallback((state) => state.setView, []));
@@ -25,14 +35,18 @@ const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <aside className="md:w-[22rem] w-full md:border-white md:border-r h-screen">
       <div className="md:block hidden h-[75%] w-full">
-        <div className="h-44 border-b border-white flex items-center justify-center">
-          <h1 className="text-6xl font-bold">GumroaD</h1>
+        <div className="h-44 border-b border-white flex items-center justify-center flex-col">
+          <h1 className="text-6xl font-bold">FILroaD</h1>
+
+          <h5 className="text-white">
+            {isConnected ? sliceAddress(address) ?? data.ensName : null}
+          </h5>
         </div>
 
         <div className="flex flex-col items-start h-full justify-between w-full">
           <div className="w-full">
             <Strip
-              isActive={view === "product"}
+              isActive={view === "product" || view === "new-product"}
               onClick={() => setView("product")}
               text="Product"
               icon={<RiProductHuntLine size={35} />}
@@ -47,10 +61,13 @@ const Sidebar: React.FC<SidebarProps> = () => {
           </div>
 
           <Button
-            onClick={() => alert("todo")}
+            onClick={() => {
+              disconnect();
+              push("/");
+            }}
             type="button"
             size="sm"
-            className="hover:bg-gray-500 bg-gray-600 transition-all duration-300 ease-in-out ml-4"
+            className="hover:bg-gray-500 bg-gray-600 transition-all duration-300 ease-in-out ml-4 mb-10"
           >
             Logout
           </Button>
