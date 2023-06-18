@@ -5,14 +5,18 @@ import React from "react";
 import { RiStarSFill } from "react-icons/ri";
 
 type VerticalCardProps = {
+  rating: string;
   name: string;
   desc?: string;
   url?: string;
+  price: number;
   onClick?: () => void;
   onProfileClick: () => void;
 };
 
 const VerticalCard: React.FC<VerticalCardProps> = ({
+  rating,
+  price,
   name,
   url,
   desc,
@@ -27,7 +31,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
     >
       <div className="w-full h-fit flex items-center justify-center">
         <Image
-          src={`/images/${url}.webp`}
+          src={url}
           alt="Test"
           width={200}
           height={200}
@@ -49,7 +53,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
           }}
         >
           <Image
-            src="images/one.webp"
+            src="/images/one.webp"
             alt=""
             width={50}
             height={50}
@@ -60,11 +64,11 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
 
         <div className="font-mabry-normal flex gap-1">
           <RiStarSFill size={20} />
-          <div>4.7</div>d
+          <div>{rating}</div>
         </div>
       </div>
 
-      <div className="py-2">Price</div>
+      <div className="py-2">{price}</div>
     </button>
   );
 };

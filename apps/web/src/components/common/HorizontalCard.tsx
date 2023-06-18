@@ -18,7 +18,7 @@ const HorizontalCard: React.FC<HorizontalCardProps> = ({
       className="flex items-start py-10 px-8 border border-slate-100 cursor-default rounded-lg bg-black gap-4 hover:bg-white hover:text-black transition-all duration-700 ease-in-out text-white hover:border hover:border-black"
     >
       <Image
-        src={`/images/Svg/${url}.svg`}
+        src={`/images/product/${url}.webp`}
         alt={title}
         width={110}
         height={110}

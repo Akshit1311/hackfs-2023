@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 // Common
@@ -8,10 +8,12 @@ import ContentWrapper from "../common/ContentWrapper";
 import VerticalCard from "../common/VerticalCard";
 import HorizontalCard from "../common/HorizontalCard";
 import { getAllProducts } from "../../app/polybase/db";
+import { ProductData } from "../../Data/data";
 
 type ShowcaseProps = {};
 
 const Showcase: React.FC<ShowcaseProps> = () => {
+  const [data, setData] = useState([]);
   const router = useRouter();
 
   // Data
@@ -115,6 +117,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
     (async () => {
       const products = await getAllProducts();
       console.log({ products: products.map(({ data }) => data) });
+      setData(products.map(({ data }) => data));
     })();
   }, []);
 
@@ -122,14 +125,15 @@ const Showcase: React.FC<ShowcaseProps> = () => {
     <ContentWrapper className="md:py-10 py-8">
       <Title title="Staff Picks" className="text-2xl mb-2" />
       <div className="grid md:grid-cols-5 place-items-center gap-4 grid-cols-1">
-        {VerticalData.map(({ desc, url }, i) => (
+        {data.map((product, i) => (
           <VerticalCard
             key={i}
-            desc={desc}
-            url={url}
-            name="test"
-            onProfileClick={() => router.push(`/profile/${url}`)}
-            onClick={() => router.push(`/product/${url}`)}
+            url={product.ipfsUrl}
+            rating={product.votingStatus}
+            price={product.price}
+            name={product.name}
+            onProfileClick={() => router.push(`/profile/${product.author}`)}
+            onClick={() => router.push(`/product/${product.name}`)}
           />
         ))}
       </div>
@@ -137,7 +141,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
       <Title title="Data DAOs / Category" className="my-6 text-2xl" />
 
       <div className="grid md:grid-cols-2 gap-4 grid-cols-1">
-        {HorizontalData.map(({ desc, title, url }, i) => (
+        {ProductData.map(({ desc, title, url }, i) => (
           <HorizontalCard
             key={`horizontal-card-${title}-${i + 1}`}
             title={title}
