@@ -14,10 +14,10 @@ npx create-turbo@latest
 
 This Turborepo includes the following packages/apps:
 
-### Apps and Packages
+### Contracts on FVM Calibration
 
 - `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
+- `TImeLock`: 0x2D2eE8642537414330ACAfeF4501f29bde80149c
 - `ui`: a stub React component library shared by both `web` and `docs` applications
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo

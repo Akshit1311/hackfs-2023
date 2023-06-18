@@ -19,8 +19,6 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const { address, isConnected } = useAccount();
 
-  const { data: ensName } = useEnsName({ address });
-
   const { disconnect } = useDisconnect();
 
   const data = useDataStore(useCallback((state) => state.data, []));
@@ -31,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   const handleOnChange = () => {};
 
   useEffect(() => {
-    setData("address", ensName);
+    setData("address", address);
 
     if (isConnected) {
       (async () => {

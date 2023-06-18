@@ -6,7 +6,8 @@
     "docs": "pnpm dev --scope=docs",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "fvm:deploy": "pnpm dev --scope=blockchain"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",

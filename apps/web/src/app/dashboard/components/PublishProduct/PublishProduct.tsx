@@ -10,6 +10,7 @@ import useDataStore from "../../../../store";
 import Button from "../../../../components/common/Button";
 import Input from "../../../../components/common/Input";
 import Voting from "./Voting/Voting";
+import { propose } from "../../../../config/viem/governor";
 
 const Already = dynamic(() => import("./Already/Already"));
 const NewProduct = dynamic(() => import("./NewProduct/NewProduct"));
@@ -63,7 +64,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           Cancel
         </Button>
         <Button
-          onClick={() => alert("todo")}
+          onClick={async () => await propose()}
           type="button"
           size="sm"
           className="bg-pink-400 text-black border border-black"
