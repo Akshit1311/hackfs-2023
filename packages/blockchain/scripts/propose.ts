@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 import { moveBlocks } from "../utils/move-blocks";
 import { VOTING_DELAY } from "../constants";
+import { DealRequestStruct } from "../constants/Deal";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
@@ -9,17 +10,20 @@ async function main() {
     "GovernorContract",
     "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
   );
-  const box = await ethers.getContractAt(
-    "Box",
+  const daoDealClient = await ethers.getContractAt(
+    "DaoDealClient",
     "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6"
   );
 
-  const encodedFunctionCall = box.interface.encodeFunctionData("store", [42]);
+  const encodedFunctionCall = daoDealClient.interface.encodeFunctionData(
+    "makeDealProposal",
+    [DealRequestStruct]
+  );
 
   console.log(encodedFunctionCall);
 
   const proposeTx = await governor.propose(
-    [box.target],
+    [daoDealClient.target],
     [0],
     [encodedFunctionCall],
     "Proposal Description #6"

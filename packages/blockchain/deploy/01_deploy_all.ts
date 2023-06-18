@@ -85,19 +85,33 @@ async function main() {
   const revokeTx = await timeLock.revokeRole(adminRole, deployer.address);
   revokeTx.wait(1);
 
-  // Box Contract
-  const box = await ethers.deployContract("Box", []);
-  const transferOwnerTx = await box.transferOwnership(timeLock.target);
-  transferOwnerTx.wait(1);
+  // DAODealClient
+  const daoDealClient = await ethers.deployContract("DaoDealClient", []);
 
-  console.log(`Box deployed to ${box.target} & Roles have been setup`);
+  await daoDealClient.waitForDeployment();
+
+  console.log(`DaoDealClient deployed to ${daoDealClient.target}`);
+  const transferOwnerTx = await daoDealClient.transferOwnership(
+    timeLock.target
+  );
+  transferOwnerTx.wait(1);
+  console.log(
+    `DAODealClient deployed to ${daoDealClient.target} & Roles have been setup`
+  );
+
+  // Box Contract
+  // const box = await ethers.deployContract("Box", []);
+  // const transferOwnerTx = await box.transferOwnership(timeLock.target);
+  // transferOwnerTx.wait(1);
+
+  // console.log(`Box deployed to ${box.target} & Roles have been setup`);
 
   // DealClient
-  const dealClient = await ethers.deployContract("DealClient", []);
+  // const dealClient = await ethers.deployContract("DealClient", []);
 
-  await dealClient.waitForDeployment();
+  // await dealClient.waitForDeployment();
 
-  console.log(`DealClient deployed to ${dealClient.target}`);
+  // console.log(`DealClient deployed to ${dealClient.target}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

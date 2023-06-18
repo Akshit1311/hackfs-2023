@@ -1,8 +1,8 @@
 import { createPublicClient, createWalletClient, custom, http } from "viem";
-import { hardhat, localhost } from "viem/chains";
+import { filecoinCalibration, hardhat, localhost } from "viem/chains";
 
 const viemClient = createPublicClient({
-  chain: hardhat,
+  chain: filecoinCalibration,
   transport: http(),
 });
 // const viemClient = createPublicClient({
@@ -11,7 +11,7 @@ const viemClient = createPublicClient({
 // });
 
 export const walletClient = createWalletClient({
-  chain: hardhat,
+  chain: filecoinCalibration,
   transport: custom((window as any).ethereum),
 });
 
