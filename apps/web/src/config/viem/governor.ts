@@ -18,6 +18,7 @@ export const propose = async () => {
       address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: governorAbi,
       walletClient,
+      publicClient: viemClient,
     });
 
     const boxContractAddress = "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6";
@@ -35,7 +36,7 @@ export const propose = async () => {
         [boxContractAddress],
         [BigInt(0)],
         [encodedFunctionCall],
-        "Proposal Description #6",
+        "Proposal Description #10000000000",
       ],
       {
         chain: hardhat,
@@ -44,6 +45,27 @@ export const propose = async () => {
     );
 
     const receipt = await viemClient.waitForTransactionReceipt({ hash });
+
+    const proposalQueuedUnwatch = governorContract.watchEvent.ProposalQueued({
+      pollingInterval: 100,
+      onLogs: (logs) => {
+        console.log("ProposalQueued", { logs });
+        unwatch();
+      },
+      onError(error) {
+        console.log({ error });
+      },
+    });
+    const unwatch = governorContract.watchEvent.ProposalCreated({
+      pollingInterval: 100,
+      onLogs: (logs) => {
+        console.log({ logs });
+        unwatch();
+      },
+      onError(error) {
+        console.log({ error });
+      },
+    });
 
     console.log({ receipt });
   } catch (error) {
