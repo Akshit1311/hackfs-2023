@@ -22,7 +22,7 @@ async function main() {
     [box.target],
     [0],
     [encodedFunctionCall],
-    "Proposal Description #5"
+    "Proposal Description #6"
   );
 
   await moveBlocks(VOTING_DELAY + 1);
