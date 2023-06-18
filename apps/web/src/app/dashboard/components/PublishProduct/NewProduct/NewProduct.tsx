@@ -16,10 +16,13 @@ import Title from "../../../../../components/common/Title";
 import Button from "../../../../../components/common/Button";
 import { propose } from "../../../../../config/viem/governor";
 import { useAccount } from "wagmi";
+import { useRouter } from "next/navigation";
 
 type NewProductProps = {};
 
 const NewProduct: React.FC<NewProductProps> = () => {
+  const router = useRouter();
+
   const [form, setForm] = useState({
     productName: "",
     activeDataDAO: "membership",
@@ -32,21 +35,25 @@ const NewProduct: React.FC<NewProductProps> = () => {
   const { address } = useAccount();
 
   const onSubmit = async () => {
+    if (!address) throw new Error("No address found");
+
     try {
       if (form.activeDataDAO === "membership") {
         await propose();
       }
-      createNewProduct(
+      await createNewProduct(
         form.ipfsUrl,
         form.productName,
         ProductData.find(({ url }) => url === form.activeDataDAO).title,
         form.price,
-        address,
+        address.toString(),
         form.ipfsUrl,
         form.votingStatus
       );
+
+      router.push("/discover");
     } catch (error) {
-      console.log("Error in form submission");
+      console.log("Error in form submission", error);
     }
   };
 
@@ -113,7 +120,7 @@ const NewProduct: React.FC<NewProductProps> = () => {
                 setForm((prev) => ({ ...prev, customDataDAO: e.target.value }))
               }
               placeholder="Name of your new DataDAO"
-              value={form.productName}
+              value={form.customDataDAO}
               className="mt-1 bg-black border border-white p-4 rounded-lg text-white"
             />
           </div>

@@ -30,13 +30,13 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
       className="border border-slate-100 rounded-lg h-full w-full text-white bg-black hover:bg-white hover:text-black hover:border hover:border-gray-950 transition-all duration-700 ease-in-out hover:scale-105"
     >
       <div className="w-full h-fit flex items-center justify-center">
-        <Image
+        <img
           src={url}
           alt="Test"
           width={200}
           height={200}
           className="object-contain"
-          quality={100}
+          // quality={100}
           loading="lazy"
         />
       </div>

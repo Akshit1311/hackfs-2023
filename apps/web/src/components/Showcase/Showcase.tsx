@@ -128,7 +128,7 @@ const Showcase: React.FC<ShowcaseProps> = () => {
         {data.map((product, i) => (
           <VerticalCard
             key={i}
-            url={product.ipfsUrl}
+            url={product.ipfs}
             rating={product.votingStatus}
             price={product.price}
             name={product.name}

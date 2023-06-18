@@ -62,8 +62,8 @@ export const propose = async () => {
       {
         chain: filecoinCalibration,
         account,
-        maxFeePerGas: BigInt(10000000000),
-        maxPriorityFeePerGas: BigInt(10000000000),
+        // maxFeePerGas: BigInt(10000000000),
+        // maxPriorityFeePerGas: BigInt(10000000000),
       }
     );
 
