@@ -1,37 +1,42 @@
 export const ProductData = [
   {
-    url: "digital",
-    title: "Digital Product",
-    desc: "Any set of files to download or to stream.",
-  },
-  {
     url: "audiobook",
-    title: "Audiobook",
+    title: "Lagrange DAO",
     desc: "Any set of files to download or to stream.",
   },
   {
     url: "course",
-    title: "Course or tutorial",
+    title: "Glacier DAO",
     desc: "Any set of files to download or to stream.",
   },
   {
     url: "ebook",
-    title: "E-Book",
+    title: "SPN Dao",
     desc: "Any set of files to download or to stream.",
   },
+  // {
+  //   url: "membership",
+  //   title: "Digital Product",
+  //   desc: "Any set of files to download or to stream.",
+  // },
   {
     url: "newsletter",
-    title: "Newsletter",
+    title: "Kangaroo",
     desc: "Any set of files to download or to stream.",
   },
   {
     url: "physical",
-    title: "Physical good",
+    title: "Shale",
     desc: "Any set of files to download or to stream.",
   },
-  {
-    url: "podcast",
-    title: "Podcast",
-    desc: "Any set of files to download or to stream.",
-  },
+  // {
+  //   url: "podcast",
+  //   title: "Digital Product",
+  //   desc: "Any set of files to download or to stream.",
+  // },
+  // {
+  //   url: "digital",
+  //   title: "Digital Product",
+  //   desc: "Any set of files to download or to stream.",
+  // },
 ];

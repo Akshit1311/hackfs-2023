@@ -4,6 +4,7 @@ import Image from "next/image";
 
 // Helpers
 import { cn } from "../../../../../utils/helpers";
+import { createNewProduct } from "../../../../polybase/db";
 
 // Data
 import { ProductData } from "../../../../../Data/data";
@@ -12,32 +13,71 @@ import { ProductData } from "../../../../../Data/data";
 import FileUploadInput from "./FileUpload/FileUploadInput";
 import Input from "../../../../../components/common/Input";
 import Title from "../../../../../components/common/Title";
+import Button from "../../../../../components/common/Button";
+import { propose } from "../../../../../config/viem/governor";
+import { useAccount } from "wagmi";
 
 type NewProductProps = {};
 
 const NewProduct: React.FC<NewProductProps> = () => {
-  const [activeDataDao, setActiveDataDao] = useState("digital");
+  const [form, setForm] = useState({
+    productName: "",
+    activeDataDAO: "membership",
+    price: 0,
+    ipfsUrl: "",
+    votingStatus: "approval",
+    customDataDAO: "",
+  });
+
+  const { address } = useAccount();
+
+  const onSubmit = async () => {
+    try {
+      if (form.activeDataDAO === "membership") {
+        await propose();
+      }
+      createNewProduct(
+        form.ipfsUrl,
+        form.productName,
+        ProductData.find(({ url }) => url === form.activeDataDAO).title,
+        form.price,
+        address,
+        form.ipfsUrl,
+        form.votingStatus
+      );
+    } catch (error) {
+      console.log("Error in form submission");
+    }
+  };
 
   return (
-    <section className="p-20 grid md:grid-cols-[0.6fr_1fr]">
-      <div className="max-w-sm">
-        <p className="font-mabry-normal text-base">
+    <section className="p-20 ">
+      <div>
+        <p className="font-mabry-normal text-5xl">
           Make some selections,fill in some boxes, and go live in minutes.
         </p>
       </div>
+      <br />
       <div>
         <div className="">
           <Title title="Name" />
           <Input
-            onChange={() => ""}
+            onChange={(e) =>
+              setForm((prev) => ({ ...prev, productName: e.target.value }))
+            }
             placeholder="Name of Product"
-            value=""
+            value={form.productName}
             className="mt-1 bg-black border border-white p-4 rounded-lg text-white"
           />
         </div>
+
         <div className="mt-8">
           <Title title="File Upload" />
-          <FileUploadInput onImageUpload={(url) => console.log(url)} />
+          <FileUploadInput
+            onImageUpload={(url) =>
+              setForm((prev) => ({ ...prev, ipfsUrl: url }))
+            }
+          />
         </div>
         <div className="mt-8">
           <Title title="Data DAO / Category" />
@@ -46,8 +86,10 @@ const NewProduct: React.FC<NewProductProps> = () => {
               desc={"Create your own Data DAO"}
               title={"Custom Data DAO"}
               url={"membership"}
-              active={activeDataDao === "membership"}
-              onClick={() => setActiveDataDao("membership")}
+              active={form.activeDataDAO === "membership"}
+              onClick={() =>
+                setForm((prev) => ({ ...prev, activeDataDAO: "membership" }))
+              }
             />
             {ProductData.map(({ desc, title, url }, i) => (
               <Card
@@ -55,21 +97,51 @@ const NewProduct: React.FC<NewProductProps> = () => {
                 desc={desc}
                 title={title}
                 url={url}
-                onClick={() => setActiveDataDao(url)}
-                active={activeDataDao === url}
+                onClick={() =>
+                  setForm((prev) => ({ ...prev, activeDataDAO: url }))
+                }
+                active={form.activeDataDAO === url}
               />
             ))}
           </div>
         </div>
+        {form.activeDataDAO === "membership" && (
+          <div className="mt-8">
+            <Title title="DataDAO Name" />
+            <Input
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, customDataDAO: e.target.value }))
+              }
+              placeholder="Name of your new DataDAO"
+              value={form.productName}
+              className="mt-1 bg-black border border-white p-4 rounded-lg text-white"
+            />
+          </div>
+        )}
+        <div className="mt-8">
+          <Title title="Price" />
 
-        <Input
-          type="number"
-          onChange={() => ""}
-          placeholder="Fill Price"
-          value=""
-          className="mt-4 bg-black border border-white p-4 rounded-lg text-white"
-        />
+          <Input
+            type="number"
+            onChange={(e) =>
+              setForm((prev) => ({ ...prev, price: parseInt(e.target.value) }))
+            }
+            placeholder="Price in $Fil"
+            value={form.price.toString()}
+            className="mt-1 bg-black border border-white p-4 rounded-lg text-white"
+          />
+        </div>
       </div>
+      <br />
+
+      <Button
+        onClick={onSubmit}
+        type="button"
+        size="sm"
+        className="bg-pink-400 text-black border border-black hover:bg-pink-500"
+      >
+        Next: Customize
+      </Button>
     </section>
   );
 };

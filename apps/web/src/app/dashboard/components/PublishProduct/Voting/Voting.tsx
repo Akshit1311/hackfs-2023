@@ -48,7 +48,7 @@ const VotingCard: React.FC<Props> = ({ src, onUpVoteClick }) => (
         size="sm"
         className="bg-pink-400"
       >
-        Up Vote
+        Down Vote
       </Button>
       <Button
         onClick={() => ""}
@@ -56,7 +56,7 @@ const VotingCard: React.FC<Props> = ({ src, onUpVoteClick }) => (
         size="sm"
         className="bg-pink-400"
       >
-        Up Vote
+        No Vote
       </Button>
     </div>
   </div>
