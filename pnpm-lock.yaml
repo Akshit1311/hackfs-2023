@@ -26,6 +26,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@spheron/browser-upload':
+        specifier: ^1.0.5
+        version: 1.0.5
+      '@spheron/storage':
+        specifier: ^1.0.18
+        version: 1.0.18
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
@@ -1569,6 +1575,42 @@ packages:
       antlr4ts: 0.5.0-alpha.4
     dev: true
 
+  /@spheron/browser-upload@1.0.5:
+    resolution: {integrity: sha512-Eiu5uQTlTUmyH6JQqh4rae/yLC/ii4U9C6yX2Vxq6RTtgJeMmBKaPRwYGmrAaQA2li45SzEwgbmQLhiUPXcl/g==}
+    dependencies:
+      '@spheron/core': 1.0.6
+      '@spheron/encryption': 1.0.0
+      form-data: 4.0.0
+      jwt-decode: 3.1.2
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /@spheron/core@1.0.6:
+    resolution: {integrity: sha512-kw/vtbrqiCOKuLon/gUUzgQOFFn401oQNqcbFjA4/KH1+1ucHTN/JPToNlkkngYcGUWpB3ZfdiYnmFCZBlUlFA==}
+    dependencies:
+      axios: 1.1.2
+      eventsource: 2.0.2
+      p-limit: 3.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
+  /@spheron/encryption@1.0.0:
+    resolution: {integrity: sha512-Teald+lhbi1MtwZ6tbWeg4gbWCvQFuRTmCx4jhxoE48tZmHByJNu9ZBHIcsNjCWNzkwg8lA+FQO4HZoAxLF5KQ==}
+    dev: false
+
+  /@spheron/storage@1.0.18:
+    resolution: {integrity: sha512-/3XQfJ8Yvzxd7ARx5H6CnT3/O0zp6qQVtnvZK+TFSNkzzMEknSrVoV/EhVfJ4eo2VdhHlvYC1ZSKQApvo+9D8A==}
+    dependencies:
+      '@spheron/core': 1.0.6
+      '@spheron/encryption': 1.0.0
+      form-data: 4.0.0
+      multiformats: 9.9.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
+
   /@stablelib/aead@1.0.1:
     resolution: {integrity: sha512-q39ik6sxGHewqtO0nP4BuSe3db5G1fEJE8ukvngS2gLkBXyy6E7pLubhbYgnkDFv6V8cWaxcE4Xn0t6LWcJkyg==}
     dev: false
@@ -3024,6 +3066,16 @@ packages:
       follow-redirects: 1.15.2(debug@4.3.4)
     transitivePeerDependencies:
       - debug
+
+  /axios@1.1.2:
+    resolution: {integrity: sha512-bznQyETwElsXl2RK7HLLwb5GPpOLlycxHCtrpDR/4RqqBzjARaOTo3jz4IgtntWUYee7Ne4S8UHd92VCuzPaWA==}
+    dependencies:
+      follow-redirects: 1.15.2(debug@4.3.4)
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /axobject-query@3.1.1:
     resolution: {integrity: sha512-goKlv8DZrK9hUh975fnHzhNIO4jUnFCfv/dszV5VwUGDFjI6vQ2VwoyjYjYNEbBE8AH87TduWP5uyDR1D+Iteg==}
@@ -5069,6 +5121,11 @@ packages:
     engines: {node: '>=0.8.x'}
     dev: false
 
+  /eventsource@2.0.2:
+    resolution: {integrity: sha512-IzUmBGPR3+oUG9dUeXynyNmf91/3zUSJg1lCktzKw47OXuhco54U3r9B7O4XX+Rb1Itm9OZ2b0RkTs10bICOxA==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /evp_bytestokey@1.0.3:
     resolution: {integrity: sha512-/f2Go4TognH/KvCISP7OUsHn85hT9nUkxxA9BEWxFn+Oj9o8ZNLm/40hdlgSLyuOimsrTKLUMEorQexp/aPQeA==}
     dependencies:
@@ -5375,7 +5432,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: true
 
   /forwarded@0.2.0:
     resolution: {integrity: sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow==}
@@ -6631,6 +6687,10 @@ packages:
     dependencies:
       array-includes: 3.1.6
       object.assign: 4.1.4
+    dev: false
+
+  /jwt-decode@3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
     dev: false
 
   /keccak@3.0.3:
@@ -8047,6 +8107,10 @@ packages:
 
   /proxy-compare@2.5.1:
     resolution: {integrity: sha512-oyfc0Tx87Cpwva5ZXezSp5V9vht1c7dZBhvuV/y3ctkgMVUmiAGDVeeB0dKhGSyT0v1ZTEQYpe/RXlBVBNuCLA==}
+    dev: false
+
+  /proxy-from-env@1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
 
   /psl@1.9.0:
