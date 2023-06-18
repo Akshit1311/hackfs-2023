@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -20,11 +20,11 @@ const Profile: React.FC<pageProps> = ({
 }) => {
   const router = useRouter();
 
-  const domainData = useDataStore((state) => state.data);
+  const domainData = useDataStore(useCallback((state) => state.data, []));
 
   const { address, isConnected } = useAccount();
 
-  const { data, isError, isLoading } = useEnsAvatar({
+  const { data } = useEnsAvatar({
     name: domainData.ensName,
   });
 
@@ -33,13 +33,21 @@ const Profile: React.FC<pageProps> = ({
       <div className="flex items-center justify-between w-full border-b border-white py-5 px-[5%] sticky top-0">
         <div>
           <div className="flex items-center gap-2">
-            {data && (
+            {data ? (
               <Image
                 src={data}
                 alt={data}
                 width={50}
                 height={50}
-                className="rounded-full object-contain border"
+                className="rounded-full object-contain"
+              />
+            ) : (
+              <Image
+                src="/images/avatar.png"
+                alt="default-avatar"
+                width={50}
+                height={50}
+                className="rounded-full object-contain"
               />
             )}
             {isConnected ? (
@@ -48,7 +56,7 @@ const Profile: React.FC<pageProps> = ({
               <div className=" text-center">Please Connect your wallet</div>
             )}
           </div>
-          <div className="text-sm font-mabry">{address}</div>
+          <div className="text-sm font-mabry mt-2">{address}</div>
         </div>
       </div>
       <div className="py-5 px-[5%] text-5xl font-mabry-normal border-b border-white">
