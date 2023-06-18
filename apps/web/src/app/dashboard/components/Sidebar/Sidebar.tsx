@@ -38,7 +38,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         <div className="h-44 border-b border-white flex items-center justify-center flex-col">
           <h1 className="text-6xl font-bold">FILroaD</h1>
 
-          <h5 className="text-white">
+          <h5 className="text-green-400 border border-green-400 p-2 rounded-lg mt-2">
             {isConnected ? sliceAddress(address) ?? data.ensName : null}
           </h5>
         </div>
@@ -73,12 +73,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
           </Button>
         </div>
       </div>
-
-      <div className="md:hidden  text-center p-4 flex items-center justify-evenly gap-4 border-b border-white">
-        <div>logo</div>
-        <h2 className="text-sm">What are u creating??</h2>
-        <div>mob</div>
-      </div>
     </aside>
   );
 };
@@ -94,7 +88,7 @@ interface Props {
 const Strip: React.FC<Props> = ({ onClick, text, icon, isActive }) => (
   <div
     className={cn(
-      "flex items-center border-b border-white w-full px-4 py-2 ",
+      "flex items-center border-b border-white w-full px-4 py-2 transition-all duration-300 ease-in-out",
       isActive ? "text-pink-400" : "text-white"
     )}
   >

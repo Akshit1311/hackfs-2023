@@ -51,12 +51,16 @@ const Profile: React.FC<pageProps> = ({
               />
             )}
             {isConnected ? (
-              domainData.ensName
+              <div className="text-green-400 font-semibold text-xl">
+                {domainData.ensName}
+              </div>
             ) : (
-              <div className=" text-center">Please Connect your wallet</div>
+              <div className="text-center">Please Connect your wallet</div>
             )}
           </div>
-          <div className="text-sm font-mabry mt-2">{address}</div>
+          <div className=" font-mabry mt-2 text-green-400 font-semibold text-base">
+            {`${address.slice(0, 10)}...${address.slice(-10)}`}
+          </div>
         </div>
       </div>
       <div className="py-5 px-[5%] text-5xl font-mabry-normal border-b border-white">

@@ -1,57 +1,22 @@
 import React, { useState } from "react";
+
+import Image from "next/image";
+
+// Helpers
+import { cn } from "../../../../../utils/helpers";
+
+// Data
+import { ProductData } from "../../../../../Data/data";
+
+// Components
+import FileUploadInput from "./FileUpload/FileUploadInput";
 import Input from "../../../../../components/common/Input";
 import Title from "../../../../../components/common/Title";
-import Image from "next/image";
-import { cn } from "../../../../../utils/helpers";
-import FileUploadInput from "./FileUpload/FileUploadInput";
 
 type NewProductProps = {};
 
 const NewProduct: React.FC<NewProductProps> = () => {
   const [activeDataDao, setActiveDataDao] = useState("digital");
-
-  const ProductData = [
-    {
-      url: "digital",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    {
-      url: "audiobook",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    {
-      url: "course",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    {
-      url: "ebook",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    // {
-    //   url: "membership",
-    //   title: "Digital Product",
-    //   desc: "Any set of files to download or to stream.",
-    // },
-    {
-      url: "newsletter",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    {
-      url: "physical",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-    {
-      url: "podcast",
-      title: "Digital Product",
-      desc: "Any set of files to download or to stream.",
-    },
-  ];
 
   return (
     <section className="p-20 grid md:grid-cols-[0.6fr_1fr]">

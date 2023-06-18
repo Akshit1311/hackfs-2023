@@ -39,22 +39,22 @@ const page: React.FC<pageProps> = () => {
             <Button
               type="button"
               size="xl"
-              onClick={() => push("/discover")}
-              className=" text-black border-black font-semibold hover:bg-yellow-500 bg-yellow-400"
-            >
-              Discover
-            </Button>
-            <Button
-              type="button"
-              size="xl"
               onClick={() => push("/dashboard")}
               className=" text-black  font-semibold bg-pink-400 hover:bg-pink-500"
             >
               Dashboard
             </Button>
+            <Button
+              type="button"
+              size="xl"
+              onClick={() => push("/discover")}
+              className=" text-black border-black font-semibold hover:bg-yellow-500 bg-yellow-400"
+            >
+              Discover
+            </Button>
           </div>
           <div className="flex items-center gap-2">
-            <div className="border rounded-lg p-4">
+            <div className="text-green-400 border border-green-400 rounded-lg p-4">
               Connected to : {ensName ?? sliceAddress(address)}d
             </div>
             <Button

@@ -27,7 +27,7 @@ const Already: React.FC<AlreadyProps> = () => {
             size="sm"
             onClick={() => setView("new-product")}
             type="button"
-            className="bg-pink-400 text-black border-black mx-auto mt-3"
+            className="bg-pink-400 hover:bg-pink-500 text-black border-black mx-auto mt-3"
           >
             New Product
           </Button>

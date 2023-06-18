@@ -40,7 +40,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={() => setView("new-product")}
           type="button"
           size="sm"
-          className="bg-pink-400 text-black border border-black"
+          className="bg-pink-400 text-black border border-black hover:bg-pink-500"
         >
           New Product
         </Button>
@@ -52,7 +52,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={() => setView("product")}
           type="button"
           size="sm"
-          className="border border-white text-white"
+          className="bg-transparent border black text-white hover:bg-white hover:text-black"
         >
           Cancel
         </Button>
@@ -60,7 +60,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={async () => await propose()}
           type="button"
           size="sm"
-          className="bg-pink-400 text-black border border-black"
+          className="bg-pink-400 text-black border border-black hover:bg-pink-500"
         >
           Next: Customize
         </Button>
