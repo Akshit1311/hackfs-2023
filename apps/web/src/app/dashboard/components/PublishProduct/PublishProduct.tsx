@@ -8,7 +8,6 @@ import useDataStore from "../../../../store";
 
 // Common
 import Button from "../../../../components/common/Button";
-import Input from "../../../../components/common/Input";
 import Voting from "./Voting/Voting";
 import { propose } from "../../../../config/viem/governor";
 
@@ -37,17 +36,11 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
   const ViewHeader = {
     product: (
       <ButtonStrip>
-        <Input
-          onChange={() => ""}
-          placeholder="Search"
-          value=""
-          className="bg-black border border-white text-white  p-2 rounded-lg"
-        />
         <Button
           onClick={() => setView("new-product")}
           type="button"
           size="sm"
-          className="bg-pink-400 text-black border border-black"
+          className="bg-pink-400 text-black border border-black hover:bg-pink-500"
         >
           New Product
         </Button>
@@ -59,7 +52,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={() => setView("product")}
           type="button"
           size="sm"
-          className="border border-white text-white"
+          className="bg-transparent border black text-white hover:bg-white hover:text-black"
         >
           Cancel
         </Button>
@@ -67,7 +60,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
           onClick={async () => await propose()}
           type="button"
           size="sm"
-          className="bg-pink-400 text-black border border-black"
+          className="bg-pink-400 text-black border border-black hover:bg-pink-500"
         >
           Next: Customize
         </Button>
@@ -76,7 +69,7 @@ const PublishProduct: React.FC<PublishProductProps> = () => {
   } as const;
 
   return (
-    <section className="overflow-y-auto h-screen w-full">
+    <section className="overflow-y-auto h-screen w-full noScrollbar">
       <header className="h-44 px-4 border-b border-white flex flex-col items-center justify-center w-full sticky top-0 z-10 backdrop-blur-md">
         <div className="flex items-center justify-between w-full">
           <h1 className="text-4xl">{ViewText[view]}</h1>

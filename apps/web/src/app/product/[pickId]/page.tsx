@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { pickId: string } }) {
               size="md"
               onClick={() => alert("add to cart todo")}
               type="button"
-              className="border border-white"
+              className="bg-transparent border black text-white hover:bg-white hover:text-black"
             >
               Add to cart
             </Button>
@@ -98,7 +98,7 @@ export default function Page({ params }: { params: { pickId: string } }) {
               type="button"
               size="md"
               onClick={() => alert("add to cart todo")}
-              className="border border-white w-full"
+              className="bg-transparent border black text-white hover:bg-white hover:text-black w-full"
             >
               Add to cart
             </Button>

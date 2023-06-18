@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
       className={cn(
         className,
         sizeMap[size],
-        "flex items-center justify-center "
+        "flex items-center justify-center transition-all duration-500 ease-in-out"
       )}
       onClick={onClick}
     >

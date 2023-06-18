@@ -11,6 +11,7 @@ import Input from "../common/Input";
 import ContentWrapper from "../common/ContentWrapper";
 import useDataStore from "../../store";
 import { getEnsName, sliceAddress } from "../../utils/helpers";
+import { ProductData } from "../../Data/data";
 
 type NavbarProps = {};
 
@@ -52,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             type="button"
             className="text-5xl font-bold font-mabry"
           >
-            GumroaD
+            FILroaD
           </button>
           <div className="flex items-center gap-2 md:w-full w-fit">
             <div className="text-base bg-black w-full rounded-lg border border-white p-4">
@@ -64,7 +65,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               />
             </div>
 
-            <div className="border border-white rounded-lg p-1.5">
+            <div className="border border-green-400 rounded-lg p-1.5 text-green-400 font-bold">
               {isConnected ? (
                 data.ensName ?? sliceAddress(address)
               ) : (
@@ -75,7 +76,11 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
           </div>
         </div>
-        <div className="md:flex hidden mt-6">List</div>
+        <div className="md:flex hidden mt-6">
+          {ProductData.map(({ title }) => (
+            <span className="mx-4 text-xl font-mabry-normal">{title}</span>
+          ))}
+        </div>
       </ContentWrapper>
     </header>
   );
